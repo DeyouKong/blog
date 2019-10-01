@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ blog.title }}</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/my_style.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/theme/{{ blog.theme }}">
+    <!-- 加上下面的语句就可以适配移动端，否则不适配，会出现错乱或者滚动条 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="header">
+    <p>{{ blog.title }}</p>
+</div>
+
+<div class="container">
+    <div class="col-md-3">
+
+        {% load my_tags %}
+        <!-- 加载 自定义的 template_tag  -->
+
+        {% get_left_menu username %}
+        <!-- 调用 my_tags 中的 get_left_menu 方法，把 left_menu 中的代码贴到这里来  -->
+        <!-- 需要视图函数传一个 username 参数 -->
+
+    </div>
+
+
+    <div class="col-md-8">
+        {% block page-main %}
+
+        {% endblock %}
+
+    </div>
+
+</div>
+
+
+<script src="/static/jquery-3.1.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+</body>
+</html>

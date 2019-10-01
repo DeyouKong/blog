@@ -1,0 +1,46 @@
+
+<!-- 继承 base 模版的内容，模板所需要的对象也需要由在处理函数中传参 -->
+{% extends "base.html" %}
+
+{% block page-main %}
+
+    <div class="article-detail">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.articledetail.content|safe }}</p>
+
+    </div>
+
+    <div id="div_digg">
+        <div class="diggit action">
+            <span class="diggum" id="digg_count">{{ article.up_count }}</span>
+        </div>
+        <div class="buryit action">
+            <span class="burynum" id="bury_count">{{ article.down_count }}</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    {% csrf_token %}
+
+    <script>
+        $("#div_digg .action").click(function () {
+            // 点赞或踩灭
+            var is_up = $(this).hasClass("diggit");
+            var article_id = "{{ article.pk }}"
+
+            $.ajax({
+                url:"/blog/up_down/",
+                type:"post",
+                data:{
+                    "is_up":is_up,
+                    "article":article_id,
+                    "csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val(),
+                },
+                success:function (data) {
+                    console.log(data)
+                }
+            })
+        })
+
+    </script>
+{% endblock %}

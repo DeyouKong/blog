@@ -1,0 +1,32 @@
+<!-- 文章分类 -->
+<div class="panel panel-primary">
+    <div class="panel-heading">文章分类</div>
+    <div class="panel-body">
+        {% for category in category_list %}
+            <p><a href="">{{ category.title }}({{ category.c }})</a></p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 标签分类 -->
+<div class="panel panel-warning">
+    <div class="panel-heading">标签分类</div>
+    <div class="panel-body">
+        {% for tag in tag_list %}
+            <p><a href="">{{ tag.title }}({{ tag.c }})</a></p>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- 日期分类 -->
+<div class="panel panel-info">
+    <div class="panel-heading">日期归档</div>
+    <div class="panel-body">
+        {% for archive in archive_list %}
+            <p><a href="">{{ archive.archove_ym }}({{ archive.c }})</a></p>
+        {% endfor %}
+
+    </div>
+</div>
+

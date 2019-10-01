@@ -1,0 +1,15 @@
+Metadata-Version: 2.0
+Name: geetest-django
+Version: 0.0.1
+Summary: A session-based geetest api implementation
+Home-page: https://github.com/winkidney/geetest-django
+Author: winkidney
+Author-email: winkidney@gmail.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: geetest
+
+UNKNOWN
+
+
