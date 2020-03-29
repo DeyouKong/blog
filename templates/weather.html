@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>天气预报</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/static/weather.css">
+    </head>
+    <body>
+        <form action="/weather/" method="POST">
+            {% csrf_token %}
+            <input name="city" type="text" placeholder="请输入要查询的城市名称">
+            <button type="submit">查询</button>
+        </form>
+        <header>{{ city }}</header>
+        <main>
+            <img class="icon" src="/static/img/cr.png">
+            <div class="tempers">{{ nowtq.date }} </div>
+            <div class="weather">{{ nowtq.temperature }}</div>
+            <div class="wind">{{ nowtq.weather }}</div>
+            <div class="current">{{ nowtq.wind }}</div>
+        </main>
+        <footer>
+{#        {% for item,index in weather_list %}#}
+          <section>
+            <div class="week">{{ onetq.date }}</div>
+            <img weight="60px" height="40px" src="/static/img/cr.png">
+            <div class="temper">{{ onetq.temperature }}</div>
+            <div class="weather">{{ onetq.weather }}</div>
+            <div class="wind">{{ onetq.wind }}</div>
+         </section>
+            <section>
+            <div class="week">{{ twotq.date }}</div>
+            <img weight="60px" height="40px" src="/static/img/cr.png">
+            <div class="temper">{{ twotq.temperature }}</div>
+            <div class="weather">{{ twotq.weather }}</div>
+            <div class="wind">{{ twotq.wind }}</div>
+         </section>
+            <section>
+            <div class="week">{{ threetq.date }}</div>
+            <img weight="60px" height="40px" src="/static/img/cr.png">
+            <div class="temper">{{ threetq.temperature }}</div>
+            <div class="weather">{{ threetq.weather }}</div>
+            <div class="wind">{{ threetq.wind }}</div>
+         </section>
+{#        {% endfor %}#}
+            <div style="clear:left;"></div>
+        </footer>
+    </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>注册</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <!-- 加上下面的语句就可以适配移动端，否则不适配，会出现错乱或者滚动条 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
@@ -67,8 +67,6 @@
                         <span id="helpBlock2" class="help-block"></span>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>
@@ -82,7 +80,7 @@
 <script>
 {#  解决图片加载问题  #}
     $("#id_avatar").change(function () {
-            {#  创建一个读取文件的对象  #}
+        {#  创建一个读取文件的对象  #}
         var fileReader = new FileReader();
             {#  取到当前选中的文件  #}
         console.log(this.files[0]);
@@ -94,7 +92,7 @@
         }
 
 
-    })
+    });
 
 {#  AJAX 提交注册数据，需要将提交按钮的 type 设置成 button  #}
     $("#reg-btn").click(function () {
@@ -106,15 +104,15 @@
         //                      contentType:false
         //      -- data 必须是FormData() 对象
 
-        var formData = new FormData();
+        var formData = ne w FormData();
         formData.append("username",$("#id_username").val());
         formData.append("password",$("#id_password").val());
         formData.append("re_password",$("#id_re_password").val());
         formData.append("email",$("#id_email").val());
         formData.append("csrfmiddlewaretoken",$("[name='csrfmiddlewaretoken']").val());
-
         // 将头像文件添加到 data 数据中
         formData.append("avatar",$("#id_avatar")[0].files[0]);
+
         $.ajax({
             url:"/register/",
             type:"post",
@@ -136,7 +134,7 @@
                     // 将错误信息填写到页面上
                     $.each(data.msg,function (k,v) {
                         // 找到对应标签的 id值
-                        console.log("id_"+k,v[0])
+                        {#console.log("id_"+k,v[0])#}
                         {#console.log(k,v[0])#}
 
                         $("#id_"+k).next("span").text(v[0]).parent().parent().addClass("has-error")

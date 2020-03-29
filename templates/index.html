@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Blog</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/my_style.css">
     <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
@@ -25,27 +25,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">The blog</a>
+            <a class="navbar-brand" href="/index/">The blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">支持 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="/weather/">查看天气</a></li>
+
                 {#  判断是否有用户名，为登陆为匿名用户，相当于用户名为空 #}
                 {#  如果有用户已经登录，则显示用户名及个人中心，否则显示登录注册按钮 #}
                 {% if request.user.username %}
-                    <li><a href="#">{{ request.user.username }}</a></li>
+{#                    <li><a href="#">{{ request.user.username }}</a></li>#}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">个人中心 <span class="caret"></span></a>
+                           aria-expanded="false">{{ request.user.username }}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">我的博客</a></li>
+                            <li><a href="#">设置</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout/">注销</a></li>
                         </ul>

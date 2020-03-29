@@ -26,7 +26,7 @@
         $("#div_digg .action").click(function () {
             // 点赞或踩灭
             var is_up = $(this).hasClass("diggit");
-            var article_id = "{{ article.pk }}"
+            var article_id = "{{ article.pk }}";
 
             $.ajax({
                 url:"/blog/up_down/",

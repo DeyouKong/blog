@@ -23,25 +23,24 @@ from blog import urls as blog_urls
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    # url(r"login/$",views.login),
-
+    url(r"^$",views.index),
     url(r"^register/",views.register),
     url(r"^login/",views.login),
+
     url(r"^logout/",views.logout),
-    url(r"^index/",views.index),
 
     url(r'^get_valid_img.png/', views.get_valid_img),
-
     # 极验滑动验证码 获取验证码的url
     url(r'^pc-geetest/register', views.get_geetest),
-
     # 上传文件操作
-    url(r"qigeming/$",views.qigeming),
+    url(r"^qigeming/$",views.qigeming),
+    # 查看天气
+    url(r"^weather/$",views.weather),
+    url(r"^forMyLover/$", views.forMyLover),
 
     url(r"^media/(?P<path>.*)$",serve,{"document_root":settings.MEDIA_ROOT}),
-
-
     # 将所有以 blog开头的url 都交给 app 下面的 urls.py 来处理
     url(r"^blog/",include(blog_urls)),
+
 
 ]

@@ -27,16 +27,9 @@ def register(request):
     if request.method == "POST":
         ret = {"status":0,"msg":""}
         form_obj = forms.RegForm(request.POST)
-
-        # 打印前段传过来的数据及文件信息
-        # print(request.POST)
-        # print(request.FILES)
-
         # 帮我做校验
         if form_obj.is_valid():
-            # 校验通过，去数据库创建一个新的用户
-
-            # 移除确认密码
+            # 校验通过，移除确认密码，去数据库创建一个新的用户
             form_obj.cleaned_data.pop("re_password")
             # 获取头像文件
             avatar_img = request.FILES.get("avatar")
@@ -45,20 +38,17 @@ def register(request):
             models.UserInfo.objects.create_user(**form_obj.cleaned_data,avatar=avatar_img)
 
             # 登陆成功后，将跳转至 index页面
-            ret["msg"] = "/index/"
+            ret["msg"] = "/"
             return JsonResponse(ret)
         else:
             print(form_obj.errors)
             ret["status"] = 1
             # 有错误，就将错误信息封装到 ret["msg"] 中
             ret["msg"] = form_obj.errors
-            print(ret)
-            print("="*120)
             return JsonResponse(ret)
 
     # 生成一个 Form 对象
     form_obj = forms.RegForm()
-    print(form_obj.fields)
     return render(request,"register.html",{"form_obj":form_obj})
 
 
@@ -102,7 +92,7 @@ def login(request):
     # if request.is_ajax():  # 如果是 AJAX请求
     if request.method == "POST":
         # 初始化一个给 AJAX 返回的数据：
-        ret = {"statys":0,"msg":""}
+        ret = {"statys":0, "msg":""}
         # 从提交过来的数据中取到用户的用户名和密码
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -131,7 +121,7 @@ def login(request):
             user = auth.authenticate(username=username,password=password)
             if user:
                 auth.login(request,user)  # 将登陆的用户赋值给request.user
-                ret["msg"] = "/index/"
+                ret["msg"] = "/"
             else:
                 ret["status"] = 1
                 ret["msg"] = "用户名或密码错误"
@@ -242,7 +232,7 @@ def get_geetest(request):
 def logout(request):
     auth.logout(request)
 
-    return redirect("/index/")
+    return redirect("/")
 
 
 def index(request):
@@ -397,3 +387,58 @@ def up_down(request):
 
     # 生成一条点赞踩灭信息
     models.ArticleUpDown.objects.create(user=user,article_id=article_id,is_up=is_up)
+
+# 处理查看天气
+import requests
+def weather(request):
+    ip_api = "https://api.map.baidu.com/location/ip?ak=wwEmIVc2ZVFcsFQdMW2MMsmGln0uRLxU"
+    response = requests.get(ip_api)
+    city_dict = response.json()
+    nowcity = city_dict["content"]["address_detail"]["city"]
+    if request.method == "POST":
+        city = request.POST["city"]
+        str = "http://api.map.baidu.com/weather/v1/?district_id=222405&data_type=all&ak=wwEmIVc2ZVFcsFQdMW2MMsmGln0uRLxU&output=json"
+    else:
+        str = "http://api.map.baidu.com/weather/v1/?district_id=222405&data_type=all&ak=wwEmIVc2ZVFcsFQdMW2MMsmGln0uRLxU&output=json"
+
+    response = requests.get(str)
+    json_str = response.text
+    json_dict = json.loads(json_str)
+    data_dict = json_dict['result']
+    print(data_dict)
+    now = data_dict["now"]
+    # index = lin['now']
+    w_date = data_dict['forecasts']
+
+    city = data_dict["location"]['city']
+    # pm = data_dict[0]['pm25']
+    # print('城市：{}; pm25：{};'.format(city, pm))
+
+    nowtq = w_date[0]
+    onetq = w_date[1]
+    twotq = w_date[2]
+    threetq = w_date[3]
+    fourtq = w_date[4]
+    for item_dict1 in w_date:
+        date = item_dict1['date']
+        temperature = item_dict1['high']
+        weather = item_dict1['text_day']
+        wind = item_dict1['wd_night']
+        print('时间：{}; 温度：{}; 天气：{}; 风向：{}'.format(date, temperature, weather, wind))
+    context = {
+        'city': city,
+        'weather_list': w_date,
+        'nowtq': nowtq,
+        'onetq': onetq,
+        'twotq': twotq,
+        'threetq': threetq,
+        'fourtq': fourtq,
+        'nowcity': nowcity,
+    }
+    return render(request, template_name='weather.html', context=context)
+
+
+def forMyLover(request):
+    return render(request, "myIndex.html")
+
+

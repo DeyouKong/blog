@@ -8,13 +8,12 @@ from django.core.exceptions import ValidationError
 from blog import models
 
 # 定义一个注册的 form 类
-
 class RegForm(forms.Form):
     username = forms.CharField(
         max_length=16,
         label="用户名",
         error_messages={
-            "max_length":"用户名最长16位",
+            "max_length":"用户名最多16位",
             "required":"用户名不能为空",
         },
         widget=widgets.TextInput(
@@ -26,8 +25,8 @@ class RegForm(forms.Form):
         max_length=16,
         label="密码",
         error_messages={
-            "min_length": "密码长度最小6位",
-            "max_length": "密码长度最大16位",
+            "min_length": "密码长度至少6位",
+            "max_length": "密码长度至多16位",
             "required": "密码不能为空",
         },
         widget=widgets.PasswordInput(
@@ -57,7 +56,6 @@ class RegForm(forms.Form):
             "invalid":"邮箱格式不正确",
         },
     )
-
 
     # 局部钩子只对某个字段做校验，做完校验后返回该字段，而不是全部数据
 
