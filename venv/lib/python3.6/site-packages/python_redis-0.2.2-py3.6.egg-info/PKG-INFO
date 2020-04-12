@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: python-redis
+Version: 0.2.2
+Summary: Redis Client
+Home-page: https://github.com/schlitzered/pyredis
+Author: schlitzer
+Author-email: stephan.schultchen@gmail.com
+License: MIT
+Description: 
+        Redis Client implementation for Python 3.
+        
+        Copyright (c) 2016, Stephan Schultchen.
+        
+        License: MIT (see LICENSE for details)
+            
+Keywords: redis
+Platform: posix
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
