@@ -5,7 +5,7 @@ from django.db.models import Count
 register = template.Library()
 
 
-@register.inclusion_tag("left_menu.html")
+@register.inclusion_tag("blog/left_menu.html")
 def get_left_menu(username):
     user = models.UserInfo.objects.filter(username=username).first()
     blog = user.blog
@@ -25,6 +25,6 @@ def get_left_menu(username):
     # 应当返回一个字典形式
     return {
         "category_list":category_list,
-        "tag_list":category_list,
+        "tag_list":tag_list,
         "archive_list":archive_list
     }

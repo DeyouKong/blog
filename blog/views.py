@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from blog import forms,models
 from django.contrib import auth
 from django.http import JsonResponse
@@ -19,7 +20,7 @@ def qigeming(request):
             for line in file_obj:
                 f.write(line)
 
-    return render(request,"qigeming.html")
+    return render(request, "blog/qigeming.html")
 
 
 # 注册的试图函数
@@ -49,42 +50,7 @@ def register(request):
 
     # 生成一个 Form 对象
     form_obj = forms.RegForm()
-    return render(request,"register.html",{"form_obj":form_obj})
-
-
-# 使用自己生成的验证码的登陆
-# def login(request):
-#     # if request.is_ajax():  # 如果是 AJAX请求
-#     if request.method == "POST":
-#         # 初始化一个给 AJAX 返回的数据：
-#         ret = {"statys":0,"msg":""}
-#         # 从提交过来的数据中取到用户的用户名和密码
-#         username = request.POST.get("username")
-#         password = request.POST.get("password")
-#         valid_code = request.POST.get("valid_code")  # 获取用户填写的验证码
-#         print(valid_code)
-#         print("用户输入的验证码".center(120,"="))
-#         if valid_code and valid_code.upper() == request.session.get("valid_code","").upper():
-#             # 验证码信息正确
-#             # 利用 auth模块 进行用户名及密码的校验
-#             user = auth.authenticate(username=username,password=password)
-#             if user:
-#                 auth.login(request,user)
-#                 ret["msg"] = "/index/"
-#             else:
-#                 ret["status"] = 1
-#                 ret["msg"] = "用户名或密码错误"
-#
-#         else:
-#             ret["status"] = 1
-#             ret["msg"] = "验证码错误"
-#
-#         return JsonResponse(ret)
-#
-#     return render(request,"login.html")
-
-
-
+    return render(request, "blog/register.html", {"form_obj":form_obj})
 
 # 使用极验滑动验证码的登陆
 
@@ -132,7 +98,7 @@ def login(request):
 
         return JsonResponse(ret)
 
-    return render(request,"login.html")
+    return render(request, "blog/login.html")
 
 
 # 获取验证码图片的视图
@@ -235,36 +201,23 @@ def logout(request):
     return redirect("/")
 
 
-def index(request):
+def blogIndex(request):
     # 查询所有的文章列表
     article_list = models.Article.objects.all()
 
-    return render(request,"index.html",{"article_list":article_list})
+    return render(request, "blog/blog_index.html", {"article_list":article_list})
+
+def index(request):
+    return render(request,"index.html")
 
 
-# 还有更简单的方法，自定义一个 templatetags
-# def get_left_menu(username):
-#     user = models.UserInfo.objects.filter(username=username).first()
-#     blog = user.blog
-#
-#
-#     # 查询某个分类对应的文章
-#     category_list = models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
-#
-#     # 统计当前站点下有哪些标签，并且按标签统计出文章数
-#     tag_list = models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
-#
-#     # 按照 日期 归档
-#     archive_list = models.Article.objects.filter(user=user).extra(
-#         select={"archive_ym": "Strftime(create_time,'%%Y-%%m')"}
-#     ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym", "c")
-#
-#     return category_list,tag_list,archive_list
-
-
-# 个人博客主页
 def home(request,username):
-    # print(username)  # 拿到用户名信息
+    """
+    个人博客主页
+    :param request:
+    :param username: 倍访问博客对象用户名称
+    :return:
+    """
     # 去 UserInfo 表里把用户对象取出来
     user = models.UserInfo.objects.filter(username=username).first()
     # print(user,type(user))
@@ -275,15 +228,15 @@ def home(request,username):
 
     # 如果用户存在，获取该用户写的所有文章
     blog = user.blog
-    # print(blog,type(blog))
 
     # 我的文章列表
     article_list = models.Article.objects.filter(user=user)
 
+    """
     # 我的文章分类及每个分类下的文章数
     # 将我的文章按照我的分类分组，并统计出每个分类下的文章数
 
-    """
+
     # 查询某个分类对应的文章
     user = models.UserInfo.objects.filter(username="xiaohei").first()  # 拿到 xiaohei 的用户对象
     blog = user.blog   # 得到 xiaohei 用户对应的 blog 站点对象
@@ -292,8 +245,7 @@ def home(request,username):
     # ret = ret[0].article_set.all()  # 查询 ret[0] 分类下面的所有文章
 
     for i in ret:
-        print(i.title,i.article_set.all().count())
-    """
+ 
 
     # category_list = models.Category.objects.filter(blog=blog)
 
@@ -316,16 +268,16 @@ def home(request,username):
     # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
 
     # category_list, tag_list, archive_list = get_left_menu(username)
+    
+           print(i.title,i.article_set.all().count())
+    """
 
-    print("这里是home页面")
+    # print("这里是home页面")
 
-    return render(request,"home.html",{
+    return render(request, "blog/home.html", {
         "username":username,
         "blog":blog,
         "article_list":article_list,
-        # "category_list":category_list,
-        # "tag_list":tag_list,
-        # "archive_list":archive_list,
     })
 
 
@@ -363,30 +315,39 @@ def article_detail(request,username,pk):
 
     return render(
         request,
-        "article_detail.html",
+        "blog/article_detail.html",
         {
             "username":username,
             "article":article_obj,
             "blog":blog,
-            # "category_list": category_list,
-            # "tag_list": tag_list,
-            # "archive_list": archive_list,
         }
     )
 
 
 # 处理点赞踩灭
 import json
+@login_required()
 def up_down(request):
-    print(request.POST)
     article_id = request.POST.get("article_id")
     is_up = json.load(request.POST.get("is_up"))
-    # 接收到的 is_up 为一个字符串，但是数据库该字段接受的为一个 布尔值，需要 json 转换
+    user_id = request.user.pk
+    res = {"status":True}
 
-    user = request.user
+    from django.db import transaction
+    try:
+        with transaction.atomic():
+            # 生成一条点赞踩灭信息
+            models.ArticleUpDown.objects.create(user_id=user_id,article_id=article_id,is_up=is_up)
+            if is_up:
+                models.Article.objects.filter(pk=article_id).update(up_count=F("ip_count")+1)
+            else:
+                models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") - 1)
+    except Exception as e:
+        res["status"] = False
+        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
 
-    # 生成一条点赞踩灭信息
-    models.ArticleUpDown.objects.create(user=user,article_id=article_id,is_up=is_up)
+    return JsonResponse(res)
+
 
 # 处理查看天气
 import requests
@@ -437,6 +398,9 @@ def weather(request):
     }
     return render(request, template_name='weather.html', context=context)
 
+
+def test(request):
+    return render(request, "test.html")
 
 def forMyLover(request):
     return render(request, "myIndex.html")
