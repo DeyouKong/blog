@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试平台</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- 加上下面的语句就可以适配移动端，否则不适配，会出现错乱或者滚动条 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal col-md-6 col-md-offset-3 login-form" method="post">
+            {% csrf_token %}
+            <h1 style="text-align: center; padding: 30px">删除缓存</h1>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required maxlength="16" type="text" class="form-control" id="env" name="env"
+                           placeholder="环境名称：go-test-5、test、staging、staging2">
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required maxlength="16" type="text" class="form-control" id="db"
+                           name="db" placeholder="db名，默认为0">
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required maxlength="16" type="text" class="form-control" id="channel"
+                           name="channel" placeholder="渠道，默认为微信W">
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required type="text" class="form-control" id="openID"
+                           name="openID" placeholder="openID">
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required type="text" class="form-control" id="unionID"
+                           name="unionID" placeholder="unionID">
+                </div>
+            </div>
+            <div class="form-group" style="padding-top:15px">
+                <div class="col-md-8 col-md-offset-2">
+                    <input required type="text" class="form-control" id="userID"
+                           name="userID" placeholder="userID">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                    <button type="button" class="btn btn-primary btn-block" id="submit-button">提交</button>
+                    <span class="login-error"></span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="/static/jquery-3.1.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script>
+    $("#submit-button").click(function () {
+        var env = $("#env").val();
+        var db = $("#db").val();
+        var channel = $("#channel").val();
+        var openID = $("#openID").val();
+        var unionID = $("#unionID").val();
+        var userID = $("#userID").val();
+        Data = {
+            "env": env,
+            "db": db,
+            "channel": channel,
+            "openID": openID,
+            "unionID": unionID,
+            "userID": userID,
+            "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+        };
+        swal({
+                title: "",
+                text: "确定删除吗？",
+                type: "warning",
+                showCancelButton: "true",
+                showConfirmButton: "true",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                animation: "slide-from-top",
+                showLoaderOnConfirm: true  //加载等待时间的显示页面
+            },
+            function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/testcase/delRedis/",
+                    dataType: "json",
+                    data: Data,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code === "0") {
+                            swal("操作成功!", "已成功删除数据！", "success");
+                        } else {
+                            swal(data.msg, "", "error");
+                        }
+                    },
+                    error:function (data) {
+                        swal("发生了未知的错误", "出错啦，请联系管理员", "error");
+                    }
+                });
+            });
+    })
+</script>
+
+
+</body>
+</html>

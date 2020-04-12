@@ -104,7 +104,7 @@
         //                      contentType:false
         //      -- data 必须是FormData() 对象
 
-        var formData = ne w FormData();
+        var formData = new FormData();
         formData.append("username",$("#id_username").val());
         formData.append("password",$("#id_password").val());
         formData.append("re_password",$("#id_re_password").val());
@@ -148,7 +148,7 @@
             }
         })
 
-    })
+    });
 
 // 将所有的 Input 绑定获取焦点的事件，将所有错误信息清空
 $("form input").focus(function () {

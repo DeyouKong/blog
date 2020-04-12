@@ -33,11 +33,17 @@
 <div class="swal">
     <input type="button" class="swal" value="查看发票详情">
 </div>
+<audio id="id_audio" autoplay="autoplay" loop="loop">
+    <source src="http://mpge.5nd.com/2018/2018-12-17/89161/1.mp3" type="audio/mpeg">
+    <embed src="http://mpge.5nd.com/2018/2018-12-17/89161/1.mp3" width=170 height=25 loop="true" autostart="true">
+</audio>
 
-<script src="../static/jquery-3.1.1.js"></script>
-<script src="../static/bootstrap/js/bootstrap.min.js"></script>
-{#<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>#}
+<script src="/static/jquery-3.1.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script>
+
+
     $(".clickFor").on("click",function (id) {
         swal({
           title:"",
