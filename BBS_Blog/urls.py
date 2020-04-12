@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
 from blog import views
+from testcase import urls as  testcase_urls
 from django.conf import settings
 from django.views.static import serve
 from blog import urls as blog_urls
@@ -26,8 +27,8 @@ urlpatterns = [
     url(r"^$",views.index),
     url(r"^register/",views.register),
     url(r"^login/",views.login),
-
     url(r"^logout/",views.logout),
+
 
     url(r'^get_valid_img.png/', views.get_valid_img),
     # 极验滑动验证码 获取验证码的url
@@ -41,6 +42,7 @@ urlpatterns = [
     url(r"^media/(?P<path>.*)$",serve,{"document_root":settings.MEDIA_ROOT}),
     # 将所有以 blog开头的url 都交给 app 下面的 urls.py 来处理
     url(r"^blog/",include(blog_urls)),
-
+    url(r"testcase/", include(testcase_urls)),
+    url(r"test/$", views.test)
 
 ]
