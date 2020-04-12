@@ -28,7 +28,6 @@ body{
     left: 50%;
     margin-top: -250px;
     margin-left: -100px;
-    /*background-image: url(/static/myLoveImg/800X800/xuedi.jpg);*/
 }
 
 .row1 .orb2{
@@ -139,7 +138,6 @@ body{
     transform: translate(-50%,-50%) translateZ(250px) rotateX(-360deg);
     width: 580px;
     height: 200px;
-    /*background: url(/static/myLoveImg/page-seven1.png) no-repeat;*/
     transition: all 2s;  /*  过渡不要忘记了  */
 }
 
@@ -206,7 +204,7 @@ body{
     animation: orbmove2 20s linear infinite;
 }
 .row3 div{
-    animation: orbmove3 60s linear infinite;
+    animation: orbmove3 40s linear infinite;
 }
 @keyframes orbmove1 {
     from{

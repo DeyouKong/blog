@@ -1,4 +1,7 @@
 /*登陆页面的css样式*/
+.container{
+    margin-top: 40%;
+}
 .login-form{
     margin-top: 70px;
 }
@@ -62,4 +65,29 @@
 
 .article p {
     font-size: 18px;
+}
+
+
+/* 点赞/踩 开始 */
+.diggit {
+    float: left;
+    width: 46px;
+    height: 52px;
+    background: url(/static/img/up.gif) no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+}
+/* 点赞/踩 结束*/
+
+.buryit{
+    float: left;
+    width: 46px;
+    height: 52px;
+    background: url(/static/img/downdown.gif) no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
 }
