@@ -2,76 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>测试平台</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <!-- 加上下面的语句就可以适配移动端，否则不适配，会出现错乱或者滚动条 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/testcase/common.css">
     <style>
-        body {
-            background-color: #eeeeee;
-        }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="row">
-        <form class="form-horizontal col-md-6 col-md-offset-3 login-form" method="post">
-            {% csrf_token %}
-            <h1 style="text-align: center; padding: 30px">删除缓存</h1>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required maxlength="16" type="text" class="form-control" id="env" name="env"
-                           placeholder="环境名称：go-test-5、test、staging、staging2">
-                </div>
-            </div>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required maxlength="16" type="text" class="form-control" id="db"
-                           name="db" placeholder="db名，默认为0">
-                </div>
-            </div>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required maxlength="16" type="text" class="form-control" id="channel"
-                           name="channel" placeholder="渠道，默认为微信W">
-                </div>
-            </div>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required type="text" class="form-control" id="openID"
-                           name="openID" placeholder="openID">
-                </div>
-            </div>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required type="text" class="form-control" id="unionID"
-                           name="unionID" placeholder="unionID">
-                </div>
-            </div>
-            <div class="form-group" style="padding-top:15px">
-                <div class="col-md-8 col-md-offset-2">
-                    <input required type="text" class="form-control" id="userID"
-                           name="userID" placeholder="userID">
+<div class="row">
+    <div class="col-md-3 side-nav left-menu">
+        <div class="panel-group" id="accordion">
+            <div class="panel-heading panel">
+                <a href="" class="side-nav-item item-title">
+                    首页
+                </a>
+                <div class="item-body collapse" id='index'>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-8">
-                    <button type="button" class="btn btn-primary btn-block" id="submit-button">提交</button>
-                    <span class="login-error"></span>
+            <div class="panel-heading panel">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item-controller" id="controller"
+                   class="side-nav-item item-title">
+                    控制台
+                </a>
+                <div id="item-controller" class="panel-collapse collapse">
+                    <div class="item-body">
+                        <ul class="list-unstyled">
+                            <li class="item-second" id=''><a href="">&nbsp;&nbsp;&nbsp;&nbsp;工作台</a></li>
+                            <li class="item-second" id=''><a href="">&nbsp;&nbsp;&nbsp;&nbsp;测试分析</a></li>
+                            <li class="item-second" id=''><a href="">&nbsp;&nbsp;&nbsp;&nbsp;环境管理</a></li>
+                            <li class="item-second" id=''><a href="">&nbsp;&nbsp;&nbsp;&nbsp;环境管理项目管理</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </form>
 
+            <div class="panel-heading panel">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item-testCaseManage" id="testCaseManage"
+                   class="side-nav-item item-title collapsed">
+                    功能测试用例管理
+                </a>
+                <div id="item-testCaseManage" class="panel-collapse collapse">
+                    <div class="item-body">
+                        <ul class="list-unstyled">
+                            <li class="item-three" id=''><a href="">用例库</a></li>
+                            <li class="item-three" id=''><a href="">测试计划</a></li>
+                            <li class="item-three" id=''><a href="">需求列表</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-heading panel">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item-api" id="action-api"
+                   class="side-nav-item item-title collapsed">
+                    API自动化测试
+                </a>
+                <div id="item-api" class="panel-collapse collapse">
+                    <div class="item-body">
+                        <ul class="list-unstyled">
+                            <li class="item-four" id=''><a href="">任务管理</a></li>
+                            <li class="item-four" id=''><a href="">测试报告</a></li>
+                            <li class="item-four" id=''><a href="">测试用例管理</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-heading panel">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item-testTools" id="testTools"
+                   class="side-nav-item item-title collapsed">
+                    测试辅助工具
+                </a>
+                <div id="item-testTools" class="panel-collapse collapse">
+                    <div class="item-body">
+                        <ul class="list-unstyled">
+                            <li class="item-five" id=''><a href="">会员登录体系缓存清楚</a></li>
+                            <li class="item-five" id=''><a href="">账号数据清理</a></li>
+                            <li class="item-five" id=''><a href="">钱包测试辅助</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-heading panel">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item-knowledge" id="knowledge"
+                   class="side-nav-item item-title collapsed">
+                    知识库
+                </a>
+                <div id="item-knowledge" class="panel-collapse collapse">
+                    <div class="item-body">
+                        <ul class="list-unstyled">
+                            <li class="item-six" id=''><a href="">会员登录体系缓存清楚</a></li>
+                            <li class="item-six" id=''><a href="">账号数据清理</a></li>
+                            <li class="item-six" id=''><a href="">钱包测试辅助</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="col-md-9">
+        <div class="page-header">
+            <i aria-label="图标: menu-fold" class="anticon anticon-menu-fold">
+                <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="menu-fold" width="1em" height="1em"
+                     fill="currentColor" aria-hidden="true">
+                    <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"></path>
+                </svg>
+            </i>
+        </div>
+        <div class="breadCrumb">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+            </ol>
+        </div>
+        <div class="container">
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                    </li>
+                    <li class=""><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {#    <div class="col-md-9">#}
+    {#        <div class="container">#}
+    {#            <form class="form-horizontal col-md-8  login-form" method="post">#}
+    {#                {% csrf_token %}#}
+    {#                <h1 style="text-align: center; padding: 30px">删除缓存</h1>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required maxlength="16" type="text" class="form-control" id="env" name="env"#}
+    {#                               placeholder="环境名称：go-test-5、test、staging、staging2">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required maxlength="16" type="text" class="form-control" id="db"#}
+    {#                               name="db" placeholder="db名，默认为0">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required maxlength="16" type="text" class="form-control" id="channel"#}
+    {#                               name="channel" placeholder="渠道，默认为微信W">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required type="text" class="form-control" id="openID"#}
+    {#                               name="openID" placeholder="openID">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required type="text" class="form-control" id="unionID"#}
+    {#                               name="unionID" placeholder="unionID">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="padding-top:15px">#}
+    {#                    <div class="col-md-8 col-md-offset-2">#}
+    {#                        <input required type="text" class="form-control" id="userID"#}
+    {#                               name="userID" placeholder="userID">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="form-group">#}
+    {#                    <div class="col-md-offset-2 col-md-8">#}
+    {#                        <button type="button" class="btn btn-primary btn-block" id="submit-button">提交</button>#}
+    {#                        <span class="login-error"></span>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </form>#}
+    {#        </div>#}
+    {#    </div>#}
 </div>
-
 <script src="/static/jquery-3.1.1.js"></script>
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script>
+    $(document).ready(function () {
+        var path = window.location.pathname;   //先得到地址栏内容
+        var regExp = /[\/\.\?]+/;
+        str = path.split(regExp);
+        var node = str.slice(-2, -1);    //截取地址栏信息得到文件名
+        $('#' + node + ' a').addClass('at');   //提前写好对应的id,菜单加亮
+        $('#' + node).parent().parent().parent().addClass('in');  //id父级的父级的父级添加展开class
+    });
+
     $("#submit-button").click(function () {
         var env = $("#env").val();
         var db = $("#db").val();
@@ -115,7 +250,7 @@
                             swal(data.msg, "", "error");
                         }
                     },
-                    error:function (data) {
+                    error: function (data) {
                         swal("发生了未知的错误", "出错啦，请联系管理员", "error");
                     }
                 });
