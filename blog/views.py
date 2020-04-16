@@ -30,9 +30,8 @@ def register(request):
         form_obj = forms.RegForm(request.POST)
         # 帮我做校验
         if form_obj.is_valid():
-            # 校验通过，移除确认密码，去数据库创建一个新的用户
+            # 校验通过，移除确认密码，去数据库创建一个新的用户，获取头像文件
             form_obj.cleaned_data.pop("re_password")
-            # 获取头像文件
             avatar_img = request.FILES.get("avatar")
 
             # **kwarg 将字典解开成一个个类似 avatar=avatar_img的形式
@@ -59,7 +58,7 @@ def login(request):
     if request.method == "POST":
         # 初始化一个给 AJAX 返回的数据：
         ret = {"statys":0, "msg":""}
-        # 从提交过来的数据中取到用户的用户名和密码
+
         username = request.POST.get("username")
         password = request.POST.get("password")
 
@@ -218,18 +217,12 @@ def home(request,username):
     :param username: 倍访问博客对象用户名称
     :return:
     """
-    # 去 UserInfo 表里把用户对象取出来
     user = models.UserInfo.objects.filter(username=username).first()
-    # print(user,type(user))
 
     if not user:
-        # 如果用户不存在，返回 404
         return HttpResponse("404")
 
-    # 如果用户存在，获取该用户写的所有文章
     blog = user.blog
-
-    # 我的文章列表
     article_list = models.Article.objects.filter(user=user)
 
     """
@@ -309,7 +302,6 @@ def article_detail(request,username,pk):
 
     # 获取文章的详情信息
     article_obj = models.Article.objects.filter(pk=pk).first()
-    print("运行到这里啦")
 
     # category_list, tag_list, archive_list = get_left_menu(username)
 
