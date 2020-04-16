@@ -1,5 +1,84 @@
-.work_left{
-    width: 100px;
+body {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #eeeeee;
+}
+
+.left-menu {
+    background-color: rgba(0, 0, 0, .65);
     height: 100%;
-    background-color: black;
+}
+
+
+
+
+.side-nav-item {
+    display: block;
+    padding: 10px 15px 10px 15px;
+    /*background-color: #FFFFFF;*/
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.item-title {
+    background-color: rgba(0,0,0,.9);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.panel-heading {
+    margin-top: 5px;
+    padding: 0;
+    border-radius: 3px;
+}
+
+.item-body {
+    background-color: green;
+    padding: 10px 15px 5px 15px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.item-second {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.item-second a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.at {
+    color: red;
+}
+
+.list-unstyled li a {
+    text-decoration: none;
+}
+
+/* 固定导航条 */
+.page-header{
+    height:40px;
+    position:relative;
+    background: #fff;
+}
+.breadcrumb{
+    flex:auto;
+    /*margin: 24px;*/
+    background-color: white;
+}
+
+/* 面板主体 */
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    overflow: auto;
 }
