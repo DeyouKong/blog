@@ -6,5 +6,7 @@ urlpatterns = [
     url(r"^(\w+)/article/(\d+)/$",views.article_detail),  # 文章详情
     url(r"^up_down/$",views.up_down),  # 文章详情
     url(r"^(\w+)/$",views.home),
+    url(r"^comment/$", views.comment),
+    url(r"^getCommentTree/(\d+)/$", views.get_comment_tree),
 
 ]

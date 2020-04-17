@@ -1,11 +1,13 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render, HttpResponse, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from blog import forms,models
+from blog import forms, models
 from django.contrib import auth
 from django.http import JsonResponse
 from geetest import GeetestLib
-from django.db.models import Count
+from django.db.models import Count, F
+import json
+from django.db import transaction
 
 
 # Create your views here.
@@ -15,8 +17,8 @@ from django.db.models import Count
 def qigeming(request):
     if request.method == "POST":
         file_obj = request.FILES.get("file")
-        print(file_obj,type(file_obj))
-        with open(file_obj.name,"wb") as f:
+        print(file_obj, type(file_obj))
+        with open(file_obj.name, "wb") as f:
             for line in file_obj:
                 f.write(line)
 
@@ -26,7 +28,7 @@ def qigeming(request):
 # 注册的试图函数
 def register(request):
     if request.method == "POST":
-        ret = {"status":0,"msg":""}
+        ret = {"status": 0, "msg": ""}
         form_obj = forms.RegForm(request.POST)
         # 帮我做校验
         if form_obj.is_valid():
@@ -35,7 +37,7 @@ def register(request):
             avatar_img = request.FILES.get("avatar")
 
             # **kwarg 将字典解开成一个个类似 avatar=avatar_img的形式
-            models.UserInfo.objects.create_user(**form_obj.cleaned_data,avatar=avatar_img)
+            models.UserInfo.objects.create_user(**form_obj.cleaned_data, avatar=avatar_img)
 
             # 登陆成功后，将跳转至 index页面
             ret["msg"] = "/"
@@ -49,7 +51,8 @@ def register(request):
 
     # 生成一个 Form 对象
     form_obj = forms.RegForm()
-    return render(request, "blog/register.html", {"form_obj":form_obj})
+    return render(request, "blog/register.html", {"form_obj": form_obj})
+
 
 # 使用极验滑动验证码的登陆
 
@@ -57,7 +60,7 @@ def login(request):
     # if request.is_ajax():  # 如果是 AJAX请求
     if request.method == "POST":
         # 初始化一个给 AJAX 返回的数据：
-        ret = {"statys":0, "msg":""}
+        ret = {"statys": 0, "msg": ""}
 
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -72,7 +75,7 @@ def login(request):
 
         valid_code = request.POST.get("valid_code")  # 获取用户填写的验证码
         print(valid_code)
-        print("用户输入的验证码".center(120,"="))
+        print("用户输入的验证码".center(120, "="))
 
         if status:
             result = gt.success_validate(challenge, validate, seccode, user_id)
@@ -83,9 +86,9 @@ def login(request):
         if result:
             # 验证码信息正确
             # 利用 auth模块 进行用户名及密码的校验
-            user = auth.authenticate(username=username,password=password)
+            user = auth.authenticate(username=username, password=password)
             if user:
-                auth.login(request,user)  # 将登陆的用户赋值给request.user
+                auth.login(request, user)  # 将登陆的用户赋值给request.user
                 ret["msg"] = "/"
             else:
                 ret["status"] = 1
@@ -132,7 +135,7 @@ def get_valid_img(request):
 
         tmp = random.choice([u, l, n])
         tmp_list.append(tmp)
-        draw_obj.text((20+40*i, 0), tmp, fill=get_random_color(), font=font_obj)
+        draw_obj.text((20 + 40 * i, 0), tmp, fill=get_random_color(), font=font_obj)
 
     print("".join(tmp_list))
     print("生成的验证码".center(120, "="))
@@ -204,13 +207,14 @@ def blogIndex(request):
     # 查询所有的文章列表
     article_list = models.Article.objects.all()
 
-    return render(request, "blog/blog_index.html", {"article_list":article_list})
+    return render(request, "blog/blog_index.html", {"article_list": article_list})
+
 
 def index(request):
-    return render(request,"index.html")
+    return render(request, "index.html")
 
 
-def home(request,username):
+def home(request, username):
     """
     个人博客主页
     :param request:
@@ -268,13 +272,13 @@ def home(request,username):
     # print("这里是home页面")
 
     return render(request, "blog/home.html", {
-        "username":username,
-        "blog":blog,
-        "article_list":article_list,
+        "username": username,
+        "blog": blog,
+        "article_list": article_list,
     })
 
 
-def article_detail(request,username,pk):
+def article_detail(request, username, pk):
     """
     :param username: 被访问的 blog 的用户名
     :param pk:  访问的文章的主键 id 值
@@ -299,7 +303,6 @@ def article_detail(request,username,pk):
     #     select={"archive_ym": "Strftime(create_time,'%%Y-%%m')"}
     # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym", "c")
 
-
     # 获取文章的详情信息
     article_obj = models.Article.objects.filter(pk=pk).first()
 
@@ -309,36 +312,68 @@ def article_detail(request,username,pk):
         request,
         "blog/article_detail.html",
         {
-            "username":username,
-            "article":article_obj,
-            "blog":blog,
+            "username": username,
+            "article": article_obj,
+            "blog": blog,
         }
     )
 
 
 # 处理点赞踩灭
-import json
 @login_required()
 def up_down(request):
     article_id = request.POST.get("article_id")
-    is_up = json.load(request.POST.get("is_up"))
+    is_up = json.loads(request.POST.get("is_up"))  # 得变成 boolean
     user_id = request.user.pk
-    res = {"status":True}
+    res = {"status": True}
+    print(article_id, is_up, user_id)
 
-    from django.db import transaction
     try:
         with transaction.atomic():
             # 生成一条点赞踩灭信息
-            models.ArticleUpDown.objects.create(user_id=user_id,article_id=article_id,is_up=is_up)
+            models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
             if is_up:
-                models.Article.objects.filter(pk=article_id).update(up_count=F("ip_count")+1)
+                models.Article.objects.filter(pk=article_id).update(up_count=F("ip_count") + 1)
             else:
                 models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") - 1)
     except Exception as e:
         res["status"] = False
-        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
-
+        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first()
+    print(res)
     return JsonResponse(res)
+
+
+# 评论
+def comment(request):
+    article_id = request.POST.get('article_id')
+    content = request.POST.get('content')
+    pid = request.POST.get('pid')
+    user_id = request.user.pk
+
+    res = {"state": True}
+
+    with transaction.atomic():  # 事务 有关联
+        if not pid:  # 提交根评论
+            obj = models.Comment.objects.create(user_id=user_id, article_id=article_id, content=content)
+        else:  # 提交子评论
+            obj = models.Comment.objects.create(user_id=user_id, article_id=article_id, content=content, parent_comment_id=pid)
+
+        # comment_count 加 + 1
+        models.Article.objects.filter(pk=article_id).update(comment_count=F("comment_count") + 1)
+
+    res['time'] = obj.create_time.strftime('%Y-%m-%d %H:%M')
+    res['content'] = obj.content
+    if obj.parent_comment_id:
+        res['pid'] = obj.parent_comment_id
+        res['pidname'] = obj.parent_comment.user.username
+    return JsonResponse(res)
+
+
+# 获取评评论树
+def get_comment_tree(request,article_id):
+    ret = list(models.Comment.objects.filter(article_id=article_id).values('pk','content','parent_comment_id','user__username',"create_time"))
+    print(ret)
+    return JsonResponse(ret,safe=False)
 
 
 # 处理查看天气
@@ -394,7 +429,6 @@ def weather(request):
 def test(request):
     return render(request, "test.html")
 
+
 def forMyLover(request):
     return render(request, "myIndex.html")
-
-
