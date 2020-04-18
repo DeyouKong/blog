@@ -8,9 +8,11 @@ from geetest import GeetestLib
 from django.db.models import Count, F
 import json
 from django.db import transaction
+import logging
 
+logger = logging.getLogger(__name__)
+collect_logger = logging.getLogger('collect')
 
-# Create your views here.
 
 # 不校验 csrf
 @csrf_exempt
@@ -25,27 +27,27 @@ def qigeming(request):
     return render(request, "blog/qigeming.html")
 
 
-# 注册的试图函数
 def register(request):
+    """
+    注册函数，使用forms的RegForm
+    :param request:
+    :return:
+    """
     if request.method == "POST":
         ret = {"status": 0, "msg": ""}
         form_obj = forms.RegForm(request.POST)
-        # 帮我做校验
         if form_obj.is_valid():
-            # 校验通过，移除确认密码，去数据库创建一个新的用户，获取头像文件
             form_obj.cleaned_data.pop("re_password")
             avatar_img = request.FILES.get("avatar")
 
             # **kwarg 将字典解开成一个个类似 avatar=avatar_img的形式
             models.UserInfo.objects.create_user(**form_obj.cleaned_data, avatar=avatar_img)
-
-            # 登陆成功后，将跳转至 index页面
-            ret["msg"] = "/"
+            ret["msg"] = "/blog/"
+            collect_logger.info(form_obj.cleaned_data.get('user').username + "注册")
             return JsonResponse(ret)
         else:
             print(form_obj.errors)
             ret["status"] = 1
-            # 有错误，就将错误信息封装到 ret["msg"] 中
             ret["msg"] = form_obj.errors
             return JsonResponse(ret)
 
@@ -54,14 +56,15 @@ def register(request):
     return render(request, "blog/register.html", {"form_obj": form_obj})
 
 
-# 使用极验滑动验证码的登陆
-
 def login(request):
-    # if request.is_ajax():  # 如果是 AJAX请求
-    if request.method == "POST":
-        # 初始化一个给 AJAX 返回的数据：
-        ret = {"statys": 0, "msg": ""}
+    """
+    处理登录接口，使用极验滑动验证码登陆
+    :param request:
+    :return:
+    """
 
+    if request.method == "POST":
+        ret = {"statys": 0, "msg": ""}
         username = request.POST.get("username")
         password = request.POST.get("password")
 
@@ -73,7 +76,7 @@ def login(request):
         status = request.session[gt.GT_STATUS_SESSION_KEY]
         user_id = request.session["user_id"]
 
-        valid_code = request.POST.get("valid_code")  # 获取用户填写的验证码
+        valid_code = request.POST.get("valid_code")
         print(valid_code)
         print("用户输入的验证码".center(120, "="))
 
@@ -82,18 +85,14 @@ def login(request):
         else:
             result = gt.failback_validate(challenge, validate, seccode)
 
-        # if valid_code and valid_code.upper() == request.session.get("valid_code","").upper():
         if result:
-            # 验证码信息正确
-            # 利用 auth模块 进行用户名及密码的校验
             user = auth.authenticate(username=username, password=password)
             if user:
-                auth.login(request, user)  # 将登陆的用户赋值给request.user
-                ret["msg"] = "/"
+                auth.login(request, user)
+                ret["msg"] = "/blog/"
             else:
                 ret["status"] = 1
                 ret["msg"] = "用户名或密码错误"
-
         else:
             ret["status"] = 1
             ret["msg"] = "验证码错误"
@@ -103,15 +102,16 @@ def login(request):
     return render(request, "blog/login.html")
 
 
-# 获取验证码图片的视图
+
 def get_valid_img(request):
-    # with open("valid_code.png", "rb") as f:
-    #     data = f.read()
-    # 自己生成一个图片
+    """
+    获取验证码图片的视图
+    :param request:
+    :return:
+    """
     from PIL import Image, ImageDraw, ImageFont
     import random
 
-    # 获取随机颜色的函数
     def get_random_color():
         return random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
@@ -200,13 +200,16 @@ def get_geetest(request):
 def logout(request):
     auth.logout(request)
 
-    return redirect("/")
+    return redirect("/blog/")
 
 
 def blogIndex(request):
-    # 查询所有的文章列表
+    """
+    博客首页
+    :param request:
+    :return:
+    """
     article_list = models.Article.objects.all()
-
     return render(request, "blog/blog_index.html", {"article_list": article_list})
 
 
@@ -229,48 +232,6 @@ def home(request, username):
     blog = user.blog
     article_list = models.Article.objects.filter(user=user)
 
-    """
-    # 我的文章分类及每个分类下的文章数
-    # 将我的文章按照我的分类分组，并统计出每个分类下的文章数
-
-
-    # 查询某个分类对应的文章
-    user = models.UserInfo.objects.filter(username="xiaohei").first()  # 拿到 xiaohei 的用户对象
-    blog = user.blog   # 得到 xiaohei 用户对应的 blog 站点对象
-    ret = models.Category.objects.filter(blog=blog)  # 求 xiaohei 站点下的文章分类信息
-
-    # ret = ret[0].article_set.all()  # 查询 ret[0] 分类下面的所有文章
-
-    for i in ret:
- 
-
-    # category_list = models.Category.objects.filter(blog=blog)
-
-    # 查询某个分类对应的文章
-    # category_list = models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
-
-    # 统计当前站点下有哪些标签，并且按标签统计出文章数
-    # tag_list = models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
-
-    # 按照 日期 归档
-    # models.Article.objects.filter(user=user).values("create_time").annotate(time=Count("article"))
-
-    # 执行一条 sql 语句
-    # ret = models.Article.objects.filter(user=user).extra(
-    #     select={"c":"date_format(create_time,'%Y-%m')"}
-    # )
-
-    # archive_list = models.Article.objects.filter(user=user).extra(
-    #     select={"archive_ym":"Strftime(create_time,'%%Y-%%m')"}
-    # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
-
-    # category_list, tag_list, archive_list = get_left_menu(username)
-    
-           print(i.title,i.article_set.all().count())
-    """
-
-    # print("这里是home页面")
-
     return render(request, "blog/home.html", {
         "username": username,
         "blog": blog,
@@ -280,33 +241,17 @@ def home(request, username):
 
 def article_detail(request, username, pk):
     """
+    文章详情
     :param username: 被访问的 blog 的用户名
     :param pk:  访问的文章的主键 id 值
     :return:
     """
-
-    # 获取被访问的用户名是否存在
     user = models.UserInfo.objects.filter(username=username).first()
     if not user:
         return HttpResponse("404")
 
     blog = user.blog
-
-    # # 查询某个分类对应的文章
-    # category_list = models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
-    #
-    # # 统计当前站点下有哪些标签，并且按标签统计出文章数
-    # tag_list = models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
-    #
-    # # 按照 日期 归档
-    # archive_list = models.Article.objects.filter(user=user).extra(
-    #     select={"archive_ym": "Strftime(create_time,'%%Y-%%m')"}
-    # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym", "c")
-
-    # 获取文章的详情信息
     article_obj = models.Article.objects.filter(pk=pk).first()
-
-    # category_list, tag_list, archive_list = get_left_menu(username)
 
     return render(
         request,
@@ -319,46 +264,55 @@ def article_detail(request, username, pk):
     )
 
 
-# 处理点赞踩灭
 @login_required()
 def up_down(request):
+    """
+    点赞、踩
+    :param request:
+    :return:
+    """
     article_id = request.POST.get("article_id")
     is_up = json.loads(request.POST.get("is_up"))  # 得变成 boolean
     user_id = request.user.pk
     res = {"status": True}
-    print(article_id, is_up, user_id)
+    print("点赞", "文章id", article_id, "点赞True/踩False", is_up, "用户id", user_id)
 
     try:
         with transaction.atomic():
             # 生成一条点赞踩灭信息
+            print("开始写入数据")
             models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
             if is_up:
-                models.Article.objects.filter(pk=article_id).update(up_count=F("ip_count") + 1)
+                models.Article.objects.filter(pk=article_id).update(up_count=F("up_count") + 1)
             else:
-                models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") - 1)
+                models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") + 1)
     except Exception as e:
         res["status"] = False
-        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first()
+        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
     print(res)
     return JsonResponse(res)
 
 
-# 评论
 def comment(request):
+    """
+    评论，如果pid存在，则创建子评论，pid不存在，创建根评论
+    :param request:
+    :return:
+    """
+    print("评论：进来拉")
     article_id = request.POST.get('article_id')
     content = request.POST.get('content')
     pid = request.POST.get('pid')
     user_id = request.user.pk
 
     res = {"state": True}
+    print("评论：", article_id,content,pid,user_id)
 
     with transaction.atomic():  # 事务 有关联
-        if not pid:  # 提交根评论
+        if not pid:
             obj = models.Comment.objects.create(user_id=user_id, article_id=article_id, content=content)
-        else:  # 提交子评论
+        else:
             obj = models.Comment.objects.create(user_id=user_id, article_id=article_id, content=content, parent_comment_id=pid)
-
-        # comment_count 加 + 1
         models.Article.objects.filter(pk=article_id).update(comment_count=F("comment_count") + 1)
 
     res['time'] = obj.create_time.strftime('%Y-%m-%d %H:%M')
@@ -369,16 +323,25 @@ def comment(request):
     return JsonResponse(res)
 
 
-# 获取评评论树
 def get_comment_tree(request,article_id):
+    """
+    获取评论树
+    :param request:
+    :param article_id: 文章id
+    :return:
+    """
     ret = list(models.Comment.objects.filter(article_id=article_id).values('pk','content','parent_comment_id','user__username',"create_time"))
-    print(ret)
+    print("评论树", ret)
     return JsonResponse(ret,safe=False)
 
 
-# 处理查看天气
 import requests
 def weather(request):
+    """
+    查看天气
+    :param request:
+    :return:
+    """
     ip_api = "https://api.map.baidu.com/location/ip?ak=wwEmIVc2ZVFcsFQdMW2MMsmGln0uRLxU"
     response = requests.get(ip_api)
     city_dict = response.json()
