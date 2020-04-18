@@ -88,7 +88,7 @@ class Article(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50,verbose_name="文章标题")  # 文章标题，verbose_name 设置在admin中的别名
     desc = models.CharField(max_length=255,verbose_name="文章描述")  # 文章描述
-    create_time = models.DateTimeField()  # 创建时间
+    create_time = models.DateTimeField(auto_now_add=True)  # 创建时间
 
     category = models.ForeignKey(to="Category", to_field="nid", null=True,on_delete=models.CASCADE)
     user = models.ForeignKey(to="UserInfo", to_field="nid",on_delete=models.DO_NOTHING)

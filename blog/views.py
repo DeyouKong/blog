@@ -209,7 +209,7 @@ def blogIndex(request):
     :param request:
     :return:
     """
-    article_list = models.Article.objects.all()
+    article_list = models.Article.objects.all().order_by("-create_time")
     return render(request, "blog/blog_index.html", {"article_list": article_list})
 
 
@@ -230,7 +230,7 @@ def home(request, username):
         return HttpResponse("404")
 
     blog = user.blog
-    article_list = models.Article.objects.filter(user=user)
+    article_list = models.Article.objects.filter(user=user).order_by("-create_time")
 
     return render(request, "blog/home.html", {
         "username": username,

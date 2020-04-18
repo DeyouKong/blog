@@ -10,6 +10,16 @@ from BBS_Blog import settings
 from blog.models import *
 from blog.views import logger
 
+@login_required
+def index(request):
+    """
+    后台文章列表页
+    :param request:
+    :return:
+    """
+    article_list = Article.objects.all().order_by("-create_time")
+    return render(request, "blog/blog_index.html", {"article_list": article_list})
+
 
 @login_required
 def add_article(request):
@@ -40,8 +50,9 @@ def add_article(request):
             ArticleDetail.objects.create(content=soup.prettify(), article=article_obj)
 
         logger.info(request.user.username+"发布了一篇文章("+title+")")
-
-        return redirect(reverse('backend:index'))
+        print(title, soup)
+        print("运行到这里拉")
+        return redirect("/blog/")
 
     else:
         return render(request, 'blog/add_article.html')

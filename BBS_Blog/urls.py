@@ -24,7 +24,7 @@ from blog import urls as blog_urls
 from backend import urls as backend_urls
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
+
     url(r"^$",views.index),
     url(r"^index/$",views.index),
     url(r"^register/",views.register),
@@ -46,7 +46,8 @@ urlpatterns = [
     url(r"^blog/",include(blog_urls)),
     url(r"^testcase/", include(testcase_urls)),
     url(r'^backend/', include(backend_urls)),
+    url('admin/', admin.site.urls),
+    url(r"test/$", views.test),
 
-    url(r"test/$", views.test)
 
 ]
