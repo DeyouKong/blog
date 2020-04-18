@@ -41,8 +41,11 @@
                                 var content = comment.content;
                                 var pk = comment.pk;
                                 var pid = comment.parent_comment_id;
+                                var create_time = comment.create_time;
+                                console.log(create_time);
                                 console.log(comment);
-                                s = '<div class="comment_tree_item" id="' + pk + '"><span>' + username + ':</span><span>' + content + '</span> </div>';
+                                s = '#' + (index+1) + '楼<div class="comment_tree_item" id="' + pk + '"><span>' + username + ':</span><span>' + content + '</span> </div><hr>';
+                                {#s1 = '#' + (index+1) + '楼<div class="comment_tree_item" id="' + pk + '"><span>'+ create_time +'</span><span>' + username + ':</span><hr><span>' + content + '</span> </div>';#}
 
                                 if (pid) {
                                     $('#' + pid).append(s)
@@ -59,7 +62,6 @@
         </script>
     </div>
 
-    <hr>
     {% if comment_list %}
         <p>评论楼</p>
         <ul class="list-group comment_list">
@@ -92,7 +94,7 @@
                 <p>昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"
                              value="{{ request.user.username }}"></p>
                 <p>评论内容：</p>
-                <textarea name="" id="comment-text" cols="63" rows="10"></textarea>
+                <textarea name="comment-text" id="comment-text" cols="63" rows="10"></textarea>
                 <button class="btn btn-default pull-right comment-btn">提交</button>
             </div>
         </div>
@@ -136,14 +138,14 @@
                             if (data.first_operate) {
                                 $('#digg_word').html('您已经推荐过').css({
                                     "color": "red",
-                                    "margin-right": "-111px",
-                                    'margin-top': "20px"
+                                    "margin-right": "26px",
+                                    'margin-top': "10px"
                                 })
                             } else {
                                 $('#digg_word').html('您已经反对过').css({
                                     "color": "red",
-                                    "margin-right": "-111px",
-                                    'margin-top': "20px"
+                                    "margin-right": "26px",
+                                    'margin-top': "10px"
                                 })
                             }
                         }
@@ -154,41 +156,28 @@
             }
         });
 
-        var pid = '';  // 空 为 根评论
 
+        var pid = '';  // 空 为 根评论
         // 绑定 提交评论事件
         $('.comment-btn').click(function () {
-
-            if ("{{ request.user.username }}") {  // 登录 后操作
-
+            if ("{{ request.user.username }}") {
+                // 登录后事件
                 // val()   input select textarea 这三个可以 取 val()
-                var article_id = $('#hid_article_pk').val();
-
-                if ($('#comment-text').val()[0] !== "@") {
-                    pid = ""
-                }
-
-                //@alex\n567
-                // 获取 子评论 内容
-                if (pid) {
-                    var index = $('#comment-text').val().indexOf('\n');
-                    var content = $('#comment-text').val().slice(index + 1)
-                } else {
-                    var content = $('#comment-text').val();
-                }
+                var article_id = "{{ article.pk }}";
+                var comment_text = $('#comment-text').val();
 
                 $.ajax({
                     url: '/blog/comment/',
                     type: 'post',
                     data: {
                         "article_id": article_id,
-                        "content": content,
+                        "content": comment_text,
                         "pid": pid,
-                        "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val()
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val(),
                     },
                     success: function (data) {
                         console.log(data);
-                        if (data.state) {  // 提交成功
+                        if (data.status) {  // 提交成功
                             console.log('-----------', data);
                             // 根评论 显示
                             var floor = $('.comment_list .comment_item').length + 1;
@@ -204,10 +193,11 @@
                                     '<p>' + content + '</p> </div> </li>';
                             } else {
                                 // 应该有 2 套 s
-                                var s = '<li class="list-group-item comment_item"><div><a href="">#' + floor + '楼</a>&nbsp;&nbsp;&nbsp; <span>' + ctime + ' </span>&nbsp;&nbsp;<a href="">' + username + '</a> </div> <div> <p>' + content + '</p> </div> </li>';
+                                var len = $(".comment_tree_item").length;
+                                s = '#' + (len+1) + '楼<div class="comment_tree_item" id="' + data.pk + '"><span>' + data.username + ':</span><span>' + data.content + '</span> </div><hr>';
                             }
 
-                            $('.comment_list').append(s);
+                            $('.comment_tree').append(s);
 
                             //清空数据
                             $('#comment-text').val("");
