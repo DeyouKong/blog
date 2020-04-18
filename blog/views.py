@@ -275,12 +275,11 @@ def up_down(request):
     is_up = json.loads(request.POST.get("is_up"))  # 得变成 boolean
     user_id = request.user.pk
     res = {"status": True}
-    print("点赞", "文章id", article_id, "点赞True/踩False", is_up, "用户id", user_id)
+    collect_logger.info("点赞/踩灭：文章id" + str(article_id) + "   点赞True/踩False：" + str(is_up) + "   用户id" + str(user_id))
 
     try:
         with transaction.atomic():
             # 生成一条点赞踩灭信息
-            print("开始写入数据")
             models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
             if is_up:
                 models.Article.objects.filter(pk=article_id).update(up_count=F("up_count") + 1)
@@ -289,7 +288,7 @@ def up_down(request):
     except Exception as e:
         res["status"] = False
         res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
-    print(res)
+        collect_logger.info("点赞/踩灭异常：文章id:%s，点赞True/踩False：%s，用户id：%s，异常信息：%s" %(str(article_id), str(is_up), str(user_id), e))
     return JsonResponse(res)
 
 
@@ -299,14 +298,14 @@ def comment(request):
     :param request:
     :return:
     """
-    print("评论：进来拉")
     article_id = request.POST.get('article_id')
     content = request.POST.get('content')
     pid = request.POST.get('pid')
     user_id = request.user.pk
+    collect_logger.info(
+        "评论：文章id：%s，评论内容：%s，用户id：%s，父评论id：%s" % (str(article_id), content, str(user_id), str(pid)))
 
-    res = {"state": True}
-    print("评论：", article_id,content,pid,user_id)
+    res = {"status": True}
 
     with transaction.atomic():  # 事务 有关联
         if not pid:
@@ -315,8 +314,10 @@ def comment(request):
             obj = models.Comment.objects.create(user_id=user_id, article_id=article_id, content=content, parent_comment_id=pid)
         models.Article.objects.filter(pk=article_id).update(comment_count=F("comment_count") + 1)
 
-    res['time'] = obj.create_time.strftime('%Y-%m-%d %H:%M')
+    res['create_time'] = obj.create_time.strftime('%Y-%m-%d %H:%M')
     res['content'] = obj.content
+    res['username'] = request.user.username
+    res['pk'] = obj.pk
     if obj.parent_comment_id:
         res['pid'] = obj.parent_comment_id
         res['pidname'] = obj.parent_comment.user.username
@@ -331,7 +332,6 @@ def get_comment_tree(request,article_id):
     :return:
     """
     ret = list(models.Comment.objects.filter(article_id=article_id).values('pk','content','parent_comment_id','user__username',"create_time"))
-    print("评论树", ret)
     return JsonResponse(ret,safe=False)
 
 
