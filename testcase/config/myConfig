@@ -1,0 +1,59 @@
+[redis-test]
+host = 10.0.3.253
+port = 6380
+password = huTYGY!@#31
+db = None
+
+[redis-new-vip]
+host = 10.0.3.253
+port = 6384
+password = 4ofD<wbml7wjAnx
+db = None
+
+
+[redis-go-test-5]
+host = 10.0.3.253
+port = 6383
+password = C!S8mPuksLlJmC28
+db = 2
+
+
+[redis-staging]
+host = 10.0.1.40
+port = 6379
+password = 1KXCXupuAi
+db = None
+
+
+[redis-staging2]
+host = staging2-redis.heyteago.com
+port = 6379
+password = 1KXCXupuAi
+db = 0
+
+
+
+
+
+[db-mysql-staging]
+host = 10.0.2.42
+port = 3306
+username = heytea_testgroup
+password = SH80x!F#
+charset = utf8
+
+
+[db-mysql-staging2]
+host = staging2-mysql-master.heyteago.com
+port = 3306
+username = heytea_testgroup
+password = SH80x!F#
+charset = utf8
+
+
+[db-mysql-test]
+host = 10.0.3.11
+port = 3306
+username = heytea_testgroup
+password = HeYteA45nj2m!#
+charset = utf8

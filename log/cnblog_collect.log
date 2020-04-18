@@ -1,0 +1,9 @@
+点赞/踩灭：文章id8   点赞True/踩False：True   用户id13
+点赞/踩灭：文章id8   点赞True/踩False：False   用户id13
+点赞/踩灭异常：文章id:8，点赞True/踩False：False，用户id：13，异常信息：UNIQUE constraint failed: blog_articleupdown.article_id, blog_articleupdown.user_id
+评论：文章id：8，评论内容：hahahah，用户id：13，父评论id：
+评论：文章id：8，评论内容：测试一下，用户id：13，父评论id：
+评论：文章id：8，评论内容：测试一下最新的评论，用户id：13，父评论id：
+评论：文章id：1，评论内容：我在测试一下，用户id：13，父评论id：
+评论：文章id：1，评论内容：崽子啊，用户id：13，父评论id：
+评论：文章id：1，评论内容：hahahah，用户id：13，父评论id：
