@@ -7,3 +7,16 @@
 评论：文章id：1，评论内容：我在测试一下，用户id：13，父评论id：
 评论：文章id：1，评论内容：崽子啊，用户id：13，父评论id：
 评论：文章id：1，评论内容：hahahah，用户id：13，父评论id：
+点赞/踩灭：文章id11   点赞True/踩False：True   用户id13
+点赞/踩灭：文章id11   点赞True/踩False：False   用户id13
+点赞/踩灭异常：文章id:11，点赞True/踩False：False，用户id：13，异常信息：UNIQUE constraint failed: blog_articleupdown.article_id, blog_articleupdown.user_id
+评论：文章id：11，评论内容：不错哦，用户id：13，父评论id：
+点赞/踩灭：文章id10   点赞True/踩False：False   用户id13
+点赞/踩灭：文章id10   点赞True/踩False：True   用户id13
+点赞/踩灭异常：文章id:10，点赞True/踩False：True，用户id：13，异常信息：UNIQUE constraint failed: blog_articleupdown.article_id, blog_articleupdown.user_id
+评论：文章id：10，评论内容：这是一篇不错的文章，用户id：13，父评论id：
+点赞/踩灭：文章id9   点赞True/踩False：True   用户id13
+点赞/踩灭：文章id14   点赞True/踩False：True   用户id13
+点赞/踩灭：文章id3   点赞True/踩False：True   用户id1
+点赞/踩灭：文章id3   点赞True/踩False：False   用户id1
+点赞/踩灭异常：文章id:3，点赞True/踩False：False，用户id：1，异常信息：(1062, "Duplicate entry '3-1' for key 'blog_articleupdown_article_id_user_id_fa3d0c08_uniq'")

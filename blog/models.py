@@ -31,6 +31,8 @@ class Blog(models.Model):
     title =models.CharField(max_length=64)  # 个人博客标题
     site = models.CharField(max_length=32,unique=True) # 个人博客后缀
     theme = models.CharField(max_length=32)   # 博客主题
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
+
 
     def __str__(self):
         return self.title
@@ -50,6 +52,7 @@ class Category(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=32)   # 分类标题
     blog = models.ForeignKey(to="Blog",to_field="nid",on_delete=models.DO_NOTHING)  # 外键关联博客，一个博客站点可以有多个分类
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
 
     def __str__(self):
         return self.title
@@ -69,6 +72,7 @@ class Tag(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=32)   # 标签名
     blog = models.ForeignKey(to="Blog",to_field="nid",on_delete=models.DO_NOTHING)   # 所属博客
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
 
     def __str__(self):
         return self.title
@@ -119,6 +123,7 @@ class ArticleDetail(models.Model):
     nid = models.AutoField(primary_key=True)
     content = models.TextField()
     article = models.OneToOneField(to="Article", to_field="nid",on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
 
     class Meta:
         # 设置在 admin 后台管理中，表的别名
@@ -135,6 +140,7 @@ class Article2Tag(models.Model):
     nid = models.AutoField(primary_key=True)
     article = models.ForeignKey(to="Article", to_field="nid",on_delete=models.CASCADE)
     tag = models.ForeignKey(to="Tag", to_field="nid",on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
 
     def __str__(self):
         return "{}-{}".format(self.article.title,self.tag.title)
@@ -156,6 +162,7 @@ class ArticleUpDown(models.Model):
     user = models.ForeignKey(to="UserInfo", null=True,on_delete=models.DO_NOTHING)
     article = models.ForeignKey(to="Article", null=True,on_delete=models.DO_NOTHING)
     is_up = models.BooleanField(default=True)
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name="创建时间")
 
     class Meta:
         unique_together = (("article", "user"),)

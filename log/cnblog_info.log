@@ -653,3 +653,701 @@ django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '
 [2020-04-18 06:25:19,712][Thread-39:123145446002688][task_id:collect][views.py:306][INFO][评论：文章id：1，评论内容：我在测试一下，用户id：13，父评论id：]
 [2020-04-18 06:27:43,259][Thread-4:123145394180096][task_id:collect][views.py:306][INFO][评论：文章id：1，评论内容：崽子啊，用户id：13，父评论id：]
 [2020-04-18 06:30:17,871][Thread-5:123145399435264][task_id:collect][views.py:306][INFO][评论：文章id：1，评论内容：hahahah，用户id：13，父评论id：]
+[2020-04-18 14:30:50,181][Thread-5:123145367552000][task_id:django.request][log.py:228][ERROR][Internal Server Error: /backend/add_article/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 298, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: blog_article.create_time
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/backend/views.py", line 38, in add_article
+    article_obj = Article.objects.create(title=title, desc=desc, user=request.user)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 413, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 298, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: blog_article.create_time
+[2020-04-18 14:36:44,930][Thread-1:123145353043968][task_id:django.request][log.py:228][ERROR][Internal Server Error: /backend/add_article/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 298, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: blog_article.create_time
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/backend/views.py", line 38, in add_article
+    article_obj = Article.objects.create(title=title, desc=desc, user=request.user)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 413, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 298, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: blog_article.create_time
+[2020-04-18 14:38:43,551][Thread-1:123145320263680][task_id:blog.views][views.py:42][INFO][admin发布了一篇文章(测试一下新建文章)]
+[2020-04-18 14:38:43,608][Thread-1:123145320263680][task_id:django.request][log.py:228][ERROR][Internal Server Error: /backend/add_article/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 75, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'backend'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/backend/views.py", line 44, in add_article
+    return redirect(reverse('backend:index'))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 86, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'backend' is not a registered namespace
+[2020-04-18 14:42:46,400][Thread-4:123145539796992][task_id:blog.views][views.py:42][INFO][admin发布了一篇文章(测试一下新建文章)]
+[2020-04-18 14:42:46,455][Thread-4:123145539796992][task_id:django.request][log.py:228][ERROR][Internal Server Error: /backend/add_article/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 75, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/backend/views.py", line 44, in add_article
+    return redirect(reverse('blog:index'))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 86, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'blog' is not a registered namespace
+[2020-04-18 14:54:51,421][Thread-1:123145342214144][task_id:blog.views][views.py:42][INFO][admin发布了一篇文章(测试一下新建文章)]
+[2020-04-18 14:54:51,480][Thread-1:123145342214144][task_id:django.request][log.py:228][ERROR][Internal Server Error: /backend/add_article/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 75, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'blog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/backend/views.py", line 45, in add_article
+    return redirect(reverse('blog:index'))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 86, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'blog' is not a registered namespace
+[2020-04-18 14:56:40,457][Thread-8:123145347469312][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id11   点赞True/踩False：True   用户id13]
+[2020-04-18 14:56:43,217][Thread-8:123145347469312][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id11   点赞True/踩False：False   用户id13]
+[2020-04-18 14:56:43,220][Thread-8:123145347469312][task_id:collect][views.py:291][INFO][点赞/踩灭异常：文章id:11，点赞True/踩False：False，用户id：13，异常信息：UNIQUE constraint failed: blog_articleupdown.article_id, blog_articleupdown.user_id]
+[2020-04-18 14:56:51,851][Thread-8:123145347469312][task_id:collect][views.py:306][INFO][评论：文章id：11，评论内容：不错哦，用户id：13，父评论id：]
+[2020-04-18 14:57:15,603][Thread-11:123145342214144][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id10   点赞True/踩False：False   用户id13]
+[2020-04-18 14:57:29,566][Thread-16:123145347469312][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id10   点赞True/踩False：True   用户id13]
+[2020-04-18 14:57:29,568][Thread-16:123145347469312][task_id:collect][views.py:291][INFO][点赞/踩灭异常：文章id:10，点赞True/踩False：True，用户id：13，异常信息：UNIQUE constraint failed: blog_articleupdown.article_id, blog_articleupdown.user_id]
+[2020-04-18 14:57:51,773][Thread-19:123145342214144][task_id:collect][views.py:306][INFO][评论：文章id：10，评论内容：这是一篇不错的文章，用户id：13，父评论id：]
+[2020-04-18 14:58:14,660][Thread-23:123145347469312][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id9   点赞True/踩False：True   用户id13]
+[2020-04-18 15:00:07,209][Thread-7:123145380061184][task_id:django.request][log.py:228][ERROR][Internal Server Error: /admin/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 213, in inner
+    if request.path == reverse('admin:logout', current_app=self.name):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' with no arguments not found. 1 pattern(s) tried: ['admin/$logout\\/$']
+[2020-04-18 15:01:00,041][Thread-1:123145329348608][task_id:django.request][log.py:228][ERROR][Internal Server Error: /admin/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 213, in inner
+    if request.path == reverse('admin:logout', current_app=self.name):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/urls/resolvers.py", line 622, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' with no arguments not found. 1 pattern(s) tried: ['admin/$logout\\/$']
+[2020-04-18 15:05:00,323][Thread-1:123145386467328][task_id:blog.views][views.py:42][INFO][admin发布了一篇文章(第二篇文章)]
+[2020-04-18 15:05:00,345][Thread-1:123145386467328][task_id:django.request][log.py:228][WARNING][Not Found: /backend/add_article/blog/index/]
+[2020-04-18 15:10:12,966][Thread-1:123145437102080][task_id:django.request][log.py:228][WARNING][Not Found: /backend/add_article/blog/index/]
+[2020-04-18 15:10:24,071][Thread-1:123145437102080][task_id:django.request][log.py:228][WARNING][Not Found: /backend/index/]
+[2020-04-18 15:11:57,104][Thread-5:123145327267840][task_id:blog.views][views.py:52][INFO][admin发布了一篇文章(第三篇文章)]
+[2020-04-18 15:12:49,806][Thread-3:123145344917504][task_id:blog.views][views.py:52][INFO][admin发布了一篇文章(第四篇文章)]
+[2020-04-18 15:16:14,171][Thread-5:123145407848448][task_id:collect][views.py:278][INFO][点赞/踩灭：文章id14   点赞True/踩False：True   用户id13]
+[2020-04-19 02:44:45,409][Thread-1:123145557757952][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/admin/archive//]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 246, in home
+    year, month = param.split("-")
+ValueError: not enough values to unpack (expected 2, got 1)
+[2020-04-19 03:05:01,734][Thread-14:123145324404736][task_id:django.request][log.py:228][ERROR][Internal Server Error: /admin/blog/articledetail/add/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\xAA\\xEF\\xBC...' for column 'content' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/options.py", line 604, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1637, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1525, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1564, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1091, in save_model
+    obj.save()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 718, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 748, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 831, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/base.py", line 869, in _do_insert
+    using=using, raw=raw)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1136, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1289, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.InternalError: (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\xAA\\xEF\\xBC...' for column 'content' at row 1")
+[2020-04-19 03:08:10,601][Thread-37:123145324404736][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/article/2/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1305, 'FUNCTION db_blog.Strftime does not exist')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 276, in article_detail
+    "blog": blog,
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/library.py", line 234, in render
+    return t.render(new_context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/defaulttags.py", line 308, in render
+    if match:
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 272, in __bool__
+    self._fetch_all()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 106, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1017, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.InternalError: (1305, 'FUNCTION db_blog.Strftime does not exist')
+[2020-04-19 03:08:39,967][Thread-37:123145324404736][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/article/3/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.InternalError: (1305, 'FUNCTION db_blog.Strftime does not exist')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 276, in article_detail
+    "blog": blog,
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/library.py", line 234, in render
+    return t.render(new_context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/template/defaulttags.py", line 308, in render
+    if match:
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 272, in __bool__
+    self._fetch_all()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 106, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1017, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1065, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 732, in _read_query_result
+    result.read()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.InternalError: (1305, 'FUNCTION db_blog.Strftime does not exist')
+[2020-04-19 03:20:07,381][Thread-9:123145356775424][task_id:collect][views.py:292][INFO][点赞/踩灭：文章id3   点赞True/踩False：True   用户id1]
+[2020-04-19 03:20:12,387][Thread-9:123145356775424][task_id:collect][views.py:292][INFO][点赞/踩灭：文章id3   点赞True/踩False：False   用户id1]
+[2020-04-19 03:20:12,613][Thread-9:123145356775424][task_id:collect][views.py:305][INFO][点赞/踩灭异常：文章id:3，点赞True/踩False：False，用户id：1，异常信息：(1062, "Duplicate entry '3-1' for key 'blog_articleupdown_article_id_user_id_fa3d0c08_uniq'")]
+[2020-04-19 03:21:16,863][Thread-9:123145356775424][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-04/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=year, create_time__month=month).order_by("-create_time")
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 70, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1807, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '04/'
+[2020-04-19 03:27:41,371][Thread-14:123145356775424][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-04/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=year, create_time__month=month).order_by("-create_time")
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 70, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1807, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '04/'
+[2020-04-19 03:31:01,493][Thread-14:123145356775424][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-4/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=year, create_time__month=month).order_by("-create_time")
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 844, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 862, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/lookups.py", line 70, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1807, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: '4/'
+[2020-04-19 03:33:01,359][Thread-1:123145359892480][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-4/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=int(year), create_time__month=int(month)).order_by("-create_time")
+ValueError: invalid literal for int() with base 10: '4/'
+[2020-04-19 03:33:08,967][Thread-1:123145359892480][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-04/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=int(year), create_time__month=int(month)).order_by("-create_time")
+ValueError: invalid literal for int() with base 10: '04/'
+[2020-04-19 03:34:16,348][Thread-1:123145359892480][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/2020-04/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 247, in home
+    article_list = models.Article.objects.filter(user=user).filter(create_time__year=int(year), create_time__month=int(month)).order_by("-create_time")
+ValueError: invalid literal for int() with base 10: '04/'
+[2020-04-19 04:07:53,815][Thread-1:123145557463040][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/archive/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 246, in home
+    year, month = param.split("-")
+ValueError: not enough values to unpack (expected 2, got 1)

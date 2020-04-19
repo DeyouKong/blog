@@ -245,6 +245,7 @@ def home(request, username, **kwargs):
         else:
             year, month = param.split("-")
             article_list = models.Article.objects.filter(user=user).filter(create_time__year=year, create_time__month=month).order_by("-create_time")
+            print(year, month)
     print(article_list)
     return render(request, "blog/home.html", {
         "username": username,
