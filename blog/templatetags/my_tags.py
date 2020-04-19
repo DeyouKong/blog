@@ -24,6 +24,7 @@ def get_left_menu(username):
 
     # 应当返回一个字典形式
     return {
+        "user": user,
         "category_list":category_list,
         "tag_list":tag_list,
         "archive_list":archive_list

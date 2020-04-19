@@ -217,11 +217,12 @@ def index(request):
     return render(request, "index.html")
 
 
-def home(request, username):
+def home(request, username, **kwargs):
     """
     个人博客主页
     :param request:
     :param username: 倍访问博客对象用户名称
+    :param kwargs: /(?P<condition>tag|cate|archive)/(?P<param>.*) 分类 标签 归档  参数
     :return:
     """
     user = models.UserInfo.objects.filter(username=username).first()
@@ -230,8 +231,21 @@ def home(request, username):
         return HttpResponse("404")
 
     blog = user.blog
-    article_list = models.Article.objects.filter(user=user).order_by("-create_time")
-
+    if not kwargs:
+        article_list = models.Article.objects.filter(user=user).order_by("-create_time")
+    else:
+        condition = kwargs.get("condition")
+        param = kwargs.get("param")
+        print(condition)
+        print(param)
+        if condition == "cate":
+            article_list = models.Article.objects.filter(user=user, category__title=param).order_by("-create_time")
+        elif condition == "tag":
+            article_list = models.Article.objects.filter(user=user, tags__title=param).order_by("-create_time")
+        else:
+            year, month = param.split("-")
+            article_list = models.Article.objects.filter(user=user).filter(create_time__year=year, create_time__month=month).order_by("-create_time")
+    print(article_list)
     return render(request, "blog/home.html", {
         "username": username,
         "blog": blog,
