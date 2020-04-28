@@ -40,6 +40,7 @@ urlpatterns = [
     # 查看天气
     url(r"^weather/$",views.weather),
     url(r"^forMyLover/$", views.forMyLover),
+    url(r"^specialPhoto/$", views.specialPhoto),
 
     url(r"^media/(?P<path>.*)$",serve,{"document_root":settings.MEDIA_ROOT}),
     # 将所有以 blog开头的url 都交给 app 下面的 urls.py 来处理

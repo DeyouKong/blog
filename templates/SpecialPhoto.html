@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>献给老婆</title>
+    <style type="text/css">
+        body {
+            background-color: black;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 600px;
+            height: 400px;
+            margin: 250px auto;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            transition: all 3s;
+            transform-style: preserve-3d;
+            animation: move 3s infinite linear alternate;
+        }
+
+        .box > div {
+            width: 300px;
+            height: 300px;
+            font-size: 60px;
+            opacity: .8;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 1s;
+        }
+
+        .box img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .left {
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .bottom {
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+
+        .after {
+            transform: translateZ(-100px);
+        }
+
+        .before {
+            transform: translateZ(100px);
+        }
+
+        .wrap .box:hover .left1 {
+            transform: rotateY(90deg) translateZ(-300px);
+        }
+
+        .wrap .box:hover .right1 {
+            transform: rotateY(90deg) translateZ(300px);
+        }
+
+        .wrap .box:hover .top1 {
+            transform: rotateX(90deg) translateZ(300px);
+        }
+
+        .wrap .box:hover .bottom1 {
+            transform: rotateX(90deg) translateZ(-300px);
+        }
+
+        .wrap .box:hover .after1 {
+            transform: translateZ(-300px);
+        }
+
+        .wrap .box:hover .before1 {
+            transform: translateZ(300px);
+        }
+
+        @keyframes move {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(180deg) rotateY(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <div class="left left1"><img src="../static/myLoveImg/yunnan/1901588048653_.pic_hd.jpg" alt=""></div>
+        <div class="left"><img src="../static/myLoveImg/yunnan/1901588048653_.pic_hd.jpg" alt=""></div>
+        <div class="right right1"><img src="../static/myLoveImg/yunnan/1961588048734_.pic_hd.jpg" alt=""></div>
+        <div class="right"><img src="../static/myLoveImg/yunnan/1961588048734_.pic_hd.jpg" alt=""></div>
+        <div class="top top1"><img src="../static/myLoveImg/yunnan/1971588050093_.pic_hd.jpg" alt=""></div>
+        <div class="top"><img src="../static/myLoveImg/yunnan/1971588050093_.pic_hd.jpg" alt=""></div>
+        <div class="bottom bottom1"><img src="../static/myLoveImg/yunnan/2001588058593_.pic_hd.jpg" alt=""></div>
+        <div class="bottom"><img src="../static/myLoveImg/yunnan/2001588058593_.pic_hd.jpg" alt=""></div>
+        <div class="after after1"><img src="../static/myLoveImg/yunnan/2021588058595_.pic_hd.jpg" alt=""></div>
+        <div class="after"><img src="../static/myLoveImg/yunnan/2021588058595_.pic_hd.jpg" alt=""></div>
+        <div class="before before1"><img src="../static/myLoveImg/yunnan/2031588058634_.pic_hd.jpg" alt=""></div>
+        <div class="before"><img src="../static/myLoveImg/yunnan/2031588058634_.pic_hd.jpg" alt=""></div>
+    </div>
+</div>
+</body>
+</html>

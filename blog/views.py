@@ -428,3 +428,6 @@ def test(request):
 
 def forMyLover(request):
     return render(request, "myIndex.html")
+
+def specialPhoto(request):
+    return render(request, "SpecialPhoto.html")

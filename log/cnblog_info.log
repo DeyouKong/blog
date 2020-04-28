@@ -1420,3 +1420,4 @@ Traceback (most recent call last):
   File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 630, in connect
     raise exc
 django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '49.235.187.208' ([Errno 51] Network is unreachable)")
+[2020-04-28 11:02:38,002][Thread-4:123145329422336][task_id:django.request][log.py:228][WARNING][Not Found: /favicon.ico]
