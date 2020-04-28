@@ -280,30 +280,48 @@ def article_detail(request, username, pk):
 
 
 @login_required()
-def up_down(request):
+def up_down(request, pk=None):
     """
     点赞、踩
     :param request:
     :return:
     """
-    article_id = request.POST.get("article_id")
-    is_up = json.loads(request.POST.get("is_up"))  # 得变成 boolean
-    user_id = request.user.pk
     res = {"status": True}
-    collect_logger.info("点赞/踩灭：文章id" + str(article_id) + "   点赞True/踩False：" + str(is_up) + "   用户id" + str(user_id))
+    user_id = request.user.pk
 
-    try:
-        with transaction.atomic():
-            # 生成一条点赞踩灭信息
-            models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
-            if is_up:
+    if request.method == "POST":
+        article_id = request.POST.get("article_id")
+        is_up = json.loads(request.POST.get("is_up"))  # 得变成 boolean
+        collect_logger.info("点赞/踩灭：文章id" + str(article_id) + "   点赞True/踩False：" + str(is_up) + "   用户id" + str(user_id))
+
+        try:
+            with transaction.atomic():
+                # 生成一条点赞踩灭信息
+                models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
+                if is_up:
+                    models.Article.objects.filter(pk=article_id).update(up_count=F("up_count") + 1)
+                else:
+                    models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") + 1)
+        except Exception as e:
+            res["status"] = False
+            res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
+            collect_logger.info("点赞/踩灭异常：文章id:%s，点赞True/踩False：%s，用户id：%s，异常信息：%s" %(str(article_id), str(is_up), str(user_id), e))
+
+    else:
+        article_id = pk
+        is_up = True
+        try:
+            with transaction.atomic():
+                # 生成一条点赞踩灭信息
+                models.ArticleUpDown.objects.create(user_id=user_id, article_id=article_id, is_up=is_up)
                 models.Article.objects.filter(pk=article_id).update(up_count=F("up_count") + 1)
-            else:
-                models.Article.objects.filter(pk=article_id).update(down_count=F("down_count") + 1)
-    except Exception as e:
-        res["status"] = False
-        res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id, user_id=user_id).first().is_up
-        collect_logger.info("点赞/踩灭异常：文章id:%s，点赞True/踩False：%s，用户id：%s，异常信息：%s" %(str(article_id), str(is_up), str(user_id), e))
+                res["num"] = models.Article.objects.filter(pk=article_id).values("up_count")
+        except Exception as e:
+            res["status"] = False
+            res["first_operate"] = models.ArticleUpDown.objects.filter(article_id=article_id,
+                                                                       user_id=user_id).first().is_up
+            collect_logger.info(
+                "点赞/踩灭异常：文章id:%s，点赞True/踩False：%s，用户id：%s，异常信息：%s" % (str(article_id), str(is_up), str(user_id), e))
     return JsonResponse(res)
 
 

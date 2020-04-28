@@ -1,5 +1,37 @@
 {% extends "blog/base.html" %}
 
+<script src="/static/jquery-3.1.1.js"></script>
+{#<script src="/static/blog/js/up_down.js"></script>#}
+<script>
+    function up_down() {
+    var username = "{{ request.user.username }}";
+    if (username) {
+        // 点赞或踩灭
+        var article_id = $(this).article_id.val();
+
+        $.ajax({
+            url: "/blog/up_down/{{ article_id }}",
+            type: "get",
+            success: function (data) {
+                if (data.status) {
+                    // 赞成功
+                    var innerHtml = '<i class="fa fa-thumbs-o-up fa-fw"' +
+                        'aria-hidden="true"></i>点赞(' + data.num +')';
+                    $('.diggit').text(innerHtml);
+
+                } else {
+                    // 重复操作 失败
+                    alert("重复操作了")
+                }
+            }
+        });
+    } else {
+        location.href = '/login/'
+    }
+}
+</script>
+
+
 {% block page-main %}
     <!-- 个人博客列表 开始 -->
     <div class="article-list">
@@ -21,12 +53,13 @@
                     <span>{{ article.create_time|date:"Y-m-d H:i:s" }}</span>
                     {#   <span class="glyphicon glyphicon-comment"><a href="">评论({{ article.comment_count }})</a></span>#}
                     {#   <span class="glyphicon glyphicon-thumbs-up"><a href="">点赞({{ article.up_count }})</a></span>#}
-                    <span><i class="fa fa-commenting-o fa-fw"
-                             aria-hidden="true"></i>评论({{ article.comment_count }})</span>
-                    <span><i class="fa fa-thumbs-o-up fa-fw"
+                    <span><a href="/blog/{{ article.user.username }}/article/{{ article.pk }}" style="color: black; text-decoration: none"><i class="fa fa-commenting-o fa-fw"
+                             aria-hidden="true"></i>评论({{ article.comment_count }})</a></span>
+                    <span style="cursor:pointer;" class="diggit" article_id="{{ article.pk }}" onclick="up_down()"><i class="fa fa-thumbs-o-up fa-fw"
                              aria-hidden="true"></i>点赞({{ article.up_count }})</span>
                 </div>
             </div>
+            {% csrf_token %}
             <hr>
         {% endfor %}
     </div>

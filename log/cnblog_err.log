@@ -1317,3 +1317,72 @@ Traceback (most recent call last):
   File "/Users/deyoukong/BBS_Blog/blog/views.py", line 246, in home
     year, month = param.split("-")
 ValueError: not enough values to unpack (expected 2, got 1)
+[2020-04-19 12:14:01,606][Thread-9:123145351229440][task_id:django.request][log.py:228][ERROR][Internal Server Error: /blog/Sampson/article/1/]
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 583, in connect
+    **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+OSError: [Errno 51] Network is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '49.235.187.208' ([Errno 51] Network is unreachable)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/deyoukong/BBS_Blog/blog/views.py", line 264, in article_detail
+    user = models.UserInfo.objects.filter(username=username).first()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 605, in first
+    for obj in (self if self.ordered else self.order_by('pk'))[:1]:
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 268, in __iter__
+    self._fetch_all()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    cursor = self.connection.cursor()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 227, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 325, in __init__
+    self.connect()
+  File "/Users/deyoukong/BBS_Blog/venv/lib/python3.6/site-packages/pymysql/connections.py", line 630, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '49.235.187.208' ([Errno 51] Network is unreachable)")

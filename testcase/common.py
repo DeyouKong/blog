@@ -75,6 +75,7 @@ def connectRedis(env, databaseType="redis", db=0):
 
 def delRedis(r, channel, open_id, union_id, user_id):
     try:
+        print(r.delete("login:user:session:1000001:%s:%s" % (channel, user_id)))
         print(r.delete("user:brandId:channel:appUserId:1000001:%s:%s" % (channel, open_id)))
         print(r.delete("user:brandId:channel:unionid:1000001:%s:%s" % (channel, union_id)))
         print(r.delete("tourist:brandId:channel:appUserId:1000001:%s:%s" % (channel, open_id)))
@@ -91,19 +92,19 @@ if __name__ == '__main__':
     run = "Z"
 
     if run == "W":
-        env = "staging2"
+        env = "staging"
         channel = "W"
         db = 0
         open_id = "onsAE0S4WSrwHYwBUD-W1ncD1sJg"
         union_id = "oZ3J71dlZ7rLj2cJf94z_Q2EdJwc"
-        user_id = "22957588"
+        user_id = "122957617"
     else:
-        env = "staging2"
+        env = "staging"
         channel = "Z"
         db = 0
         open_id = "2088502813153020"
         union_id = "2088502813153020"
-        user_id = "1000000053"
+        user_id = "1100000089"
 
 
 
