@@ -1,22 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a30bc504-40a7-47d2-ae7e-f5a509934a04" name="Default Changelist" comment="更换数据库源">
+    <list default="true" id="a30bc504-40a7-47d2-ae7e-f5a509934a04" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/demo.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/css/main.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/apple-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/bitbug_favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/login-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/logo-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/profile-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user-medium.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/img/user5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/scripts/klorofil-common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/bootstrap/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/css/chartist-custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/css/chartist-custom.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/css/chartist.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/css/chartist.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/js/chartist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/js/chartist.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/map/chartist.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/map/chartist.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/chartist/scss/chartist.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/font-awesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery-slimscroll/jquery.slimscroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery-slimscroll/jquery.slimscroll.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/angular.easypiechart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/angular.easypiechart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/easypiechart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/easypiechart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/jquery.easypiechart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/jquery/jquery.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/fonts/Linearicons-Free.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/fonts/Linearicons-Free.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/fonts/Linearicons-Free.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/fonts/Linearicons-Free.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/fonts/Linearicons-Free.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/linearicons/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/toastr/toastr.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/toastr/toastr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/toastr/toastr.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/TestPlatform/vendor/toastr/toastr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/timg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/TestPlatform/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/SpecialPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SpecialPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/add_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/add_article.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/backend.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/backend.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/blog_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/blog_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/qigeming.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/qigeming.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BBS_Blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cnblog_err.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/cnblog_err.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/cnblog_info.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/cnblog_info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/testcase/common.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/myIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/myIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/testcase/test_case_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/testcase/test_case_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/testcase/workplace.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/testcase/workplace.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/weather.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/weather.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/testcase/test_case_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TestPlatform/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/testcase/workplace.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcase/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcase/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +95,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/BBS_Blog$ORM.coverage" NAME="ORM的使用及调试 Coverage Results" MODIFIED="1553745098365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BBS_Blog$common.coverage" NAME="common Coverage Results" MODIFIED="1588071713689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase" />
+    <SUITE FILE_PATH="coverage/BBS_Blog$common.coverage" NAME="common Coverage Results" MODIFIED="1588133923351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testcase" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -62,26 +131,39 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/SpecialPhoto.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="39" column="6" lean-forward="true" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/TestPlatform/base.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="152">
+                  <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/TestPlatform/img/logo-dark.png">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/TestPlatform/css/main.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1439">
+                  <caret line="159" column="13" lean-forward="true" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -122,9 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/home.html" />
-        <option value="$PROJECT_DIR$/ORM的使用及调试.py" />
-        <option value="$PROJECT_DIR$/templates/left_menu.html" />
         <option value="$PROJECT_DIR$/blog/forms.py" />
         <option value="$PROJECT_DIR$/static/myLoveJs/myQQ.js" />
         <option value="$PROJECT_DIR$/static/myLoveCss/mypage.css" />
@@ -135,14 +214,11 @@
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/testcase/myConfig" />
-        <option value="$PROJECT_DIR$/testcase/urls.py" />
-        <option value="$PROJECT_DIR$/testcase/views.py" />
         <option value="$PROJECT_DIR$/testcase/config/myConfig" />
         <option value="$PROJECT_DIR$/static/testcase/common.css" />
         <option value="$PROJECT_DIR$/templates/backend.html" />
         <option value="$PROJECT_DIR$/templates/add_article.html" />
         <option value="$PROJECT_DIR$/templates/blog/article_detail.html" />
-        <option value="$PROJECT_DIR$/backend/urls.py" />
         <option value="$PROJECT_DIR$/backend/views.py" />
         <option value="$PROJECT_DIR$/BBS_Blog/settings.py" />
         <option value="$PROJECT_DIR$/blog/__init__.py" />
@@ -156,9 +232,7 @@
         <option value="$PROJECT_DIR$/blog/urls.py" />
         <option value="$PROJECT_DIR$/static/blog/js/up_down.js" />
         <option value="$PROJECT_DIR$/templates/blog/home.html" />
-        <option value="$PROJECT_DIR$/testcase/common.py" />
         <option value="$PROJECT_DIR$/templates/test.html" />
-        <option value="$PROJECT_DIR$/BBS_Blog/urls.py" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/templates/weather.html" />
         <option value="$PROJECT_DIR$/templates/myIndex.html" />
@@ -172,14 +246,22 @@
         <option value="$PROJECT_DIR$/templates/blog/backend.html" />
         <option value="$PROJECT_DIR$/templates/blog/add_article.html" />
         <option value="$PROJECT_DIR$/templates/SpecialPhoto.html" />
+        <option value="$PROJECT_DIR$/BBS_Blog/urls.py" />
+        <option value="$PROJECT_DIR$/backend/urls.py" />
+        <option value="$PROJECT_DIR$/testcase/views.py" />
+        <option value="$PROJECT_DIR$/testcase/urls.py" />
+        <option value="$PROJECT_DIR$/templates/TestPlatform/index.html" />
+        <option value="$PROJECT_DIR$/testcase/common.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/static/TestPlatform/css/main.css" />
+        <option value="$PROJECT_DIR$/templates/TestPlatform/base.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="154" />
-    <option name="y" value="25" />
-    <option name="width" value="1440" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-4" />
+    <option name="y" value="45" />
+    <option name="width" value="1305" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -203,7 +285,18 @@
             <path>
               <item name="BBS_Blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="BBS_Blog" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BBS_Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BBS_Blog" type="462c0819:PsiDirectoryNode" />
+              <item name="testcase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BBS_Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BBS_Blog" type="462c0819:PsiDirectoryNode" />
+              <item name="testcase" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BBS_Blog" type="b2602c69:ProjectViewProjectNode" />
@@ -229,19 +322,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/TestPlatform" />
+      <recent name="$PROJECT_DIR$/templates/TestPlatform" />
+      <recent name="$PROJECT_DIR$/static/myLoveImg" />
+      <recent name="$PROJECT_DIR$/static/myLoveImg/test" />
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/blog" />
       <recent name="$PROJECT_DIR$/templates/blog" />
       <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$/testcase/config" />
-      <recent name="$PROJECT_DIR$/media" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/myLoveImg" />
-      <recent name="$PROJECT_DIR$/static/myLoveImg/test" />
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/backend" />
-      <recent name="$PROJECT_DIR$/testcase" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -256,7 +349,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.BBS_Blog">
+  <component name="RunManager" selected="Python.common">
     <configuration name="ORM的使用及调试" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BBS_Blog" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -376,7 +469,8 @@
       <workItem from="1586571366325" duration="36166000" />
       <workItem from="1587129705122" duration="6205000" />
       <workItem from="1587140686707" duration="39992000" />
-      <workItem from="1588002681872" duration="6433000" />
+      <workItem from="1588002681872" duration="6938000" />
+      <workItem from="1588090750423" duration="6543000" />
     </task>
     <task id="LOCAL-00001" summary="add something">
       <created>1585503848798</created>
@@ -574,11 +668,18 @@
       <option name="project" value="LOCAL" />
       <updated>1588071950800</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="新增相册URL处理">
+      <created>1588080504012</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1588080504013</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263410000" />
+    <option name="totallyTimeSpent" value="270458000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -590,15 +691,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="-4" y="45" width="1305" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23104435" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19398259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49635702" weight="0.18915662" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49635702" visible="true" weight="0.18853503" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -607,7 +708,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3299363" />
       <window_info anchor="bottom" id="Database Changes" order="9" sideWeight="0.49947423" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.503643" side_tool="true" weight="0.18980892" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49502262" visible="true" weight="0.20722891" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49502262" weight="0.21910828" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4984227" weight="0.32907802" />
       <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.4984227" weight="0.27943262" />
       <window_info anchor="bottom" id="manage.py@BBS_Blog" order="14" sideWeight="0.4984227" weight="0.32907802" />
@@ -639,113 +740,10 @@
     <MESSAGE value="修复新建文章BUG及调整文章展示顺序" />
     <MESSAGE value="更换数据库源" />
     <MESSAGE value="新增相册" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增相册" />
+    <MESSAGE value="新增相册URL处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增相册URL处理" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/img/blogP.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/testcase/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcase/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/blog/js/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/logging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="1831" column="4" selection-start-line="1831" selection-start-column="4" selection-end-line="1831" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://3343aa4e-217b-4972-9aba-e9a30bef5947/schema/main/table/blog_articleupdown">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://3343aa4e-217b-4972-9aba-e9a30bef5947/schema/main/table/blog_comment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/cnblog_err.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11431" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/cnblog_info.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11431">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://3343aa4e-217b-4972-9aba-e9a30bef5947/schema/main/table/blog_articledetail">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://3343aa4e-217b-4972-9aba-e9a30bef5947/schema/main/table/blog_article">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/cnblog_collect.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="e#74#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-141">
-          <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/templatetags/my_tags.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -831,13 +829,6 @@
     <entry file="file://$PROJECT_DIR$/weather/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcase/config/myConfig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testcase/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -868,44 +859,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BBS_Blog/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#632#664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcase/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="e#75#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/weather.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/testcase/test_case_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/testcase/workplace.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -944,23 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blog/add_article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blog/article_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2070">
-          <caret line="162" column="27" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="27" />
-          <folding>
-            <element signature="n#if#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/blog/backend.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -975,13 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blog/blog_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/myIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -989,17 +922,181 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/SpecialPhoto.html">
+    <entry file="file://$PROJECT_DIR$/templates/blog/add_article.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="180">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blog/article_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="165" column="52" lean-forward="true" selection-start-line="165" selection-start-column="52" selection-end-line="165" selection-end-column="52" />
+          <folding>
+            <element signature="n#if#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TestPlatform/workplace.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-943">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TestPlatform/test_case_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blog/blog_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/SpecialPhoto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/testcase/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/vendor/jquery/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12760" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/scripts/klorofil-common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#74#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/img/bitbug_favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Blog/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="47" column="35" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+          <folding>
+            <element signature="e#632#664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="104" column="49" lean-forward="true" selection-start-line="104" selection-start-column="49" selection-end-line="104" selection-end-column="49" />
+          <folding>
+            <element signature="e#75#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/config/myConfig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcase/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TestPlatform/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/img/login-bg.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="39" column="6" lean-forward="true" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+        <state relative-caret-position="210">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/timg.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/img/logo-dark.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/TestPlatform/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1439">
+          <caret line="159" column="13" lean-forward="true" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/TestPlatform/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
         </state>
       </provider>
     </entry>

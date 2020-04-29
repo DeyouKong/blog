@@ -5,8 +5,8 @@ from django.http import JsonResponse
 
 from testcase import common
 
-def workplace(request):
-    return render(request, "testcase/workplace.html")
+def index(request):
+    return render(request, "TestPlatform/index.html")
 
 
 def delUser(request):

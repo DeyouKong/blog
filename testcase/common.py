@@ -12,6 +12,11 @@ import pymysql
 
 def conf_section(env, databaseType):
     if databaseType == "redis":
+        if env in ["member","sale2","member2"]:
+            env = "test"
+        elif env == "sale":
+            env = "new-vip"
+
         confSection = "redis-%s" % env
         return confSection
 
@@ -25,6 +30,7 @@ def getConfig(env,databaseType):
     conf_file_path = os.path.abspath(os.path.dirname(__file__)) + conf_path
     conf = configparser.RawConfigParser()
     conf.read(filenames=conf_file_path, encoding='utf-8')
+
     if databaseType == "redis":
         confSection = conf_section(env, databaseType)
         if confSection:
@@ -89,22 +95,21 @@ if __name__ == '__main__':
     """
     支付宝的 open_id 和 union_id 均为 user_oauth 表的 identifier 字段数据
     """
-    run = "Z"
+    run = "W"
+    env = "sale"
 
     if run == "W":
-        env = "staging"
         channel = "W"
         db = 0
-        open_id = "onsAE0S4WSrwHYwBUD-W1ncD1sJg"
+        open_id = "otVsY4_P5zQCrZimsUgRjT7i4Kg0"
         union_id = "oZ3J71dlZ7rLj2cJf94z_Q2EdJwc"
-        user_id = "122957617"
+        user_id = "20824057"
     else:
-        env = "staging"
         channel = "Z"
         db = 0
         open_id = "2088502813153020"
         union_id = "2088502813153020"
-        user_id = "1100000089"
+        user_id = "1000000054"
 
 
 

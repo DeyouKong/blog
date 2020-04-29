@@ -45,7 +45,7 @@ urlpatterns = [
     url(r"^media/(?P<path>.*)$",serve,{"document_root":settings.MEDIA_ROOT}),
     # 将所有以 blog开头的url 都交给 app 下面的 urls.py 来处理
     url(r"^blog/",include(blog_urls)),
-    url(r"^testcase/", include(testcase_urls)),
+    url(r"^platform/", include(testcase_urls)),
     url(r'^backend/', include(backend_urls)),
     url('admin/', admin.site.urls),
     url(r"test/$", views.test),
